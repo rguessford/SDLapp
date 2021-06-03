@@ -19,22 +19,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\entityFactories.cpp" />
-    <ClCompile Include="src\Events.cpp" />
+    <ClCompile Include="src\util\entityFactories.cpp" />
+    <ClCompile Include="src\core\Events.cpp" />
     <ClCompile Include="src\core\Renderer.cpp" />
     <ClCompile Include="src\core\SDLApplication.cpp" />
-    <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\util\sdl_load_texture.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\core\Window.cpp" />
+    <ClCompile Include="src\sys\TileManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Components.h" />
-    <ClInclude Include="src\Events.h" />
-    <ClInclude Include="src\entityFactories.h" />
+    <ClInclude Include="src\comp\tileMapComponents.h" />
+    <ClInclude Include="src\core\Events.h" />
+    <ClInclude Include="src\util\entityFactories.h" />
     <ClInclude Include="src\core\Renderer.h" />
     <ClInclude Include="src\core\SDLApplication.h" />
+    <ClInclude Include="src\sys\System.h" />
     <ClInclude Include="src\util\sdl_load_texture.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\core\Window.h" />
+    <ClInclude Include="src\sys\TileManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

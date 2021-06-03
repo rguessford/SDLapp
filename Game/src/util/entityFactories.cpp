@@ -1,5 +1,5 @@
 #include "entityFactories.h"
-#include "Components.h"
+#include "comp/tileMapComponents.h"
 #include "util/sdl_load_texture.h"
 
 #include <rapidjson/document.h>
@@ -10,7 +10,7 @@
 
 
 //creates an entity to represent and draw a tilemap
-entt::entity makeDefaultTilemap(entt::registry& reg, Renderer* renderer)
+entt::entity makeDefaultTilemap(entt::registry& reg, Renderer& renderer)
 {
 	//json is used as the spritesheet manifest
 	std::ifstream ifs("assets/cubes.json");

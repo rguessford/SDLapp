@@ -9,19 +9,6 @@ public:
 
     operator SDL_Renderer* () { return pRenderer; }
 
-    Renderer(Renderer const&) = delete;
-    Renderer(Renderer&& other) noexcept {
-        pRenderer = other.pRenderer;
-        other.pRenderer = nullptr;
-    }
-
-    Renderer& operator=(Renderer const&) = delete;
-    Renderer& operator=(Renderer&& other) noexcept {
-        pRenderer = other.pRenderer;
-        other.pRenderer = nullptr;
-        return *this;
-    }
-
     inline void clearScreen(int r, int g, int b, int a)
     {
         SDL_SetRenderDrawColor(pRenderer, r, g, b, a);

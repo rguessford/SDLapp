@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Events.cpp">
+    <ClCompile Include="src\core\Events.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\core\Renderer.cpp">
@@ -24,21 +24,24 @@
     <ClCompile Include="src\core\SDLApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Source.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Window.cpp">
+    <ClCompile Include="src\core\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\entityFactories.cpp">
+    <ClCompile Include="src\util\entityFactories.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\util\sdl_load_texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\sys\TileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Events.h">
+    <ClInclude Include="src\core\Events.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Renderer.h">
@@ -47,16 +50,22 @@
     <ClInclude Include="src\core\SDLApplication.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Window.h">
+    <ClInclude Include="src\core\Window.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Components.h">
+    <ClInclude Include="src\comp\tileMapComponents.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\entityFactories.h">
+    <ClInclude Include="src\util\entityFactories.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\util\sdl_load_texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sys\System.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sys\TileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

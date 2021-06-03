@@ -1,10 +1,10 @@
 #include "core/SDLApplication.h"
-#include "Window.h"
+#include "core/Window.h"
 #include "core/Renderer.h"
-#include "Events.h"
-#include "Components.h"
-#include "entityFactories.h"
+#include "core/Events.h"
 
+#include "util/entityFactories.h"
+#include "sys/TileManager.h"
 
 #include <iostream>
 #include <entt/entity/registry.hpp>
@@ -24,37 +24,17 @@ int main(int argc, char* args[])
 		Events events;
 		entt::registry registry;
 
-		entt::entity tilemapEntity = makeDefaultTilemap(registry, &renderer);
-		auto tileMapView = registry.view<tileMapRenderer, spriteSheet>();
-		auto& mapTable= tileMapView.get<tileMapRenderer>(tilemapEntity);
-
-		int counter=0;
-
+		makeDefaultTilemap(registry, renderer);
+		
+		TileManager tileManager(registry, renderer);
+		unsigned int lastTime = 0, currentTime, deltaTime;
 		while (events.handleEvents()) {
-			counter++;
+			currentTime = SDL_GetTicks();
+			deltaTime = currentTime - lastTime;
 			renderer.clearScreen(0, 0, 0, 0);
-
-			for (auto entity : tileMapView) {
-				auto& mapRenderer = tileMapView.get<tileMapRenderer>(entity);
-				auto& ss = tileMapView.get<spriteSheet>(entity);
-
-				for (int i = 0; i < 20; i++) {
-					for (int j = 0; j < 20; j++) {
-						mapTable.tileMap[j][i] = (j+(counter/100)) % 34;
-						SDL_Rect renderquad = { i*32+800,j*32,64,64 };
-						renderer.twoDToIso(&renderquad);
-						
-						SDL_RenderCopy(renderer, ss.texture, &ss.frameMapping.at(mapRenderer.tileMap[j][i]) , &renderquad);
-					}
-				}
-				
-
-			}
-
+			tileManager.update(deltaTime);
 			renderer.update();
 		}
-
-		registry.destroy(tilemapEntity);
 	}
 	catch (std::exception const& e) {
 		std::cerr << e.what() << "\n";
