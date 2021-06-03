@@ -19,7 +19,7 @@ SDLApplication::SDLApplication() {
 	{
 		std::stringstream buffer;
 		buffer << "SDL_image could not initialize! SDL_image Error: ", IMG_GetError();
-		
+
 		throw std::runtime_error(buffer.str());
 	}
 }

@@ -2,4 +2,4 @@
 #include "core/Renderer.h"
 #include <entt/entity/registry.hpp>
 
-entt::entity makeDefaultTilemap(entt::registry &, Renderer&);
+entt::entity makeDefaultTilemap(entt::registry&, Renderer&);

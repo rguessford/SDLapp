@@ -4,9 +4,9 @@
 class Events
 {
 public:
-    bool handleEvents();
+	bool handleEvents();
 
 
 private:
-    SDL_Event event;
+	SDL_Event event;
 };

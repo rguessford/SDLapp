@@ -25,7 +25,7 @@ int main(int argc, char* args[])
 		entt::registry registry;
 
 		makeDefaultTilemap(registry, renderer);
-		
+
 		TileManager tileManager(registry, renderer);
 		unsigned int lastTime = 0, currentTime, deltaTime;
 		while (events.handleEvents()) {
@@ -41,42 +41,3 @@ int main(int argc, char* args[])
 	}
 	return 0;
 }
-
-//int main(int argc, char* args[]) {
-//	int counter = 0;
-//	int m;
-//	int n;
-//	std::cout << "rows";
-//	std::cin >> m;
-//	std::cout << "cols";
-//	std::cin >> n;
-//
-//
-//
-//	std::unique_ptr < std::unique_ptr<int[] >[]> multi;
-//	multi = std::make_unique<std::unique_ptr<int[]>[]>(m);
-//	for (int i = 0; i < m; i++) {
-//		multi[i] = std::make_unique<int[]>(n);
-//	}
-//
-//	for (int i = 0; i < m; i++) {
-//		for (int j = 0; j < n; j++) {
-//
-//			// Assign values to the
-//			// memory blocks created
-//			multi[i][j] = ++counter;
-//		}
-//	}
-//
-//	// Traverse the 2D array
-//	for (int i = 0; i < m; i++) {
-//		for (int j = 0; j < n; j++) {
-//
-//			// Print the values of
-//			// memory blocks created
-//			std::cout << multi[i][j] << " ";
-//		}
-//		std::cout << std::endl;
-//	}
-//	return 0;
-//}

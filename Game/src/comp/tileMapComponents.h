@@ -23,4 +23,3 @@ struct spriteSheet {
 	std::vector<SDL_Rect> frameMapping;
 	int size;
 };
-
