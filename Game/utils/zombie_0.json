@@ -1,0 +1,2214 @@
+{
+    "frames": [
+        {
+            "filename": "StanceW1",
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceW2",
+            "frame": {
+                "x": 128,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceW3",
+            "frame": {
+                "x": 256,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceW4",
+            "frame": {
+                "x": 384,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW1",
+            "frame": {
+                "x": 512,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW2",
+            "frame": {
+                "x": 640,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW3",
+            "frame": {
+                "x": 768,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW4",
+            "frame": {
+                "x": 896,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW5",
+            "frame": {
+                "x": 1024,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW6",
+            "frame": {
+                "x": 1152,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW7",
+            "frame": {
+                "x": 1280,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchW8",
+            "frame": {
+                "x": 1408,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamW1",
+            "frame": {
+                "x": 1536,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamW2",
+            "frame": {
+                "x": 1664,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamW3",
+            "frame": {
+                "x": 1792,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamW4",
+            "frame": {
+                "x": 1920,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteW1",
+            "frame": {
+                "x": 2048,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteW2",
+            "frame": {
+                "x": 2176,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteW3",
+            "frame": {
+                "x": 2304,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteW4",
+            "frame": {
+                "x": 2432,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockW1",
+            "frame": {
+                "x": 2560,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockW2",
+            "frame": {
+                "x": 2688,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieW1",
+            "frame": {
+                "x": 2816,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieW2",
+            "frame": {
+                "x": 2944,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieW3",
+            "frame": {
+                "x": 3072,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieW4",
+            "frame": {
+                "x": 3200,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieW5",
+            "frame": {
+                "x": 3328,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieW6",
+            "frame": {
+                "x": 3456,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW1",
+            "frame": {
+                "x": 3584,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW2",
+            "frame": {
+                "x": 3712,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW3",
+            "frame": {
+                "x": 3840,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW4",
+            "frame": {
+                "x": 3968,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW5",
+            "frame": {
+                "x": 4096,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW6",
+            "frame": {
+                "x": 4224,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW7",
+            "frame": {
+                "x": 4352,
+                "y": 0,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieW8",
+            "frame": {
+                "x": 0,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNW1",
+            "frame": {
+                "x": 128,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNW2",
+            "frame": {
+                "x": 256,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNW3",
+            "frame": {
+                "x": 384,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNW4",
+            "frame": {
+                "x": 512,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW1",
+            "frame": {
+                "x": 640,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW2",
+            "frame": {
+                "x": 768,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW3",
+            "frame": {
+                "x": 896,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW4",
+            "frame": {
+                "x": 1024,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW5",
+            "frame": {
+                "x": 1152,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW6",
+            "frame": {
+                "x": 1280,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW7",
+            "frame": {
+                "x": 1408,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNW8",
+            "frame": {
+                "x": 1536,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNW1",
+            "frame": {
+                "x": 1664,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNW2",
+            "frame": {
+                "x": 1792,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNW3",
+            "frame": {
+                "x": 1920,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNW4",
+            "frame": {
+                "x": 2048,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNW1",
+            "frame": {
+                "x": 2176,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNW2",
+            "frame": {
+                "x": 2304,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNW3",
+            "frame": {
+                "x": 2432,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNW4",
+            "frame": {
+                "x": 2560,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockNW1",
+            "frame": {
+                "x": 2688,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockNW2",
+            "frame": {
+                "x": 2816,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNW1",
+            "frame": {
+                "x": 2944,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNW2",
+            "frame": {
+                "x": 3072,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNW3",
+            "frame": {
+                "x": 3200,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNW4",
+            "frame": {
+                "x": 3328,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNW5",
+            "frame": {
+                "x": 3456,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNW6",
+            "frame": {
+                "x": 3584,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW1",
+            "frame": {
+                "x": 3712,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW2",
+            "frame": {
+                "x": 3840,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW3",
+            "frame": {
+                "x": 3968,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW4",
+            "frame": {
+                "x": 4096,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW5",
+            "frame": {
+                "x": 4224,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW6",
+            "frame": {
+                "x": 4352,
+                "y": 128,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW7",
+            "frame": {
+                "x": 0,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNW8",
+            "frame": {
+                "x": 128,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceN1",
+            "frame": {
+                "x": 256,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceN2",
+            "frame": {
+                "x": 384,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceN3",
+            "frame": {
+                "x": 512,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceN4",
+            "frame": {
+                "x": 640,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN1",
+            "frame": {
+                "x": 768,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN2",
+            "frame": {
+                "x": 896,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN3",
+            "frame": {
+                "x": 1024,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN4",
+            "frame": {
+                "x": 1152,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN5",
+            "frame": {
+                "x": 1280,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN6",
+            "frame": {
+                "x": 1408,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN7",
+            "frame": {
+                "x": 1536,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchN8",
+            "frame": {
+                "x": 1664,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamN1",
+            "frame": {
+                "x": 1792,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamN2",
+            "frame": {
+                "x": 1920,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamN3",
+            "frame": {
+                "x": 2048,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamN4",
+            "frame": {
+                "x": 2176,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteN1",
+            "frame": {
+                "x": 2304,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteN2",
+            "frame": {
+                "x": 2432,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteN3",
+            "frame": {
+                "x": 2560,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteN4",
+            "frame": {
+                "x": 2688,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockN1",
+            "frame": {
+                "x": 2816,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockN2",
+            "frame": {
+                "x": 2944,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieN1",
+            "frame": {
+                "x": 3072,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieN2",
+            "frame": {
+                "x": 3200,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieN3",
+            "frame": {
+                "x": 3328,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieN4",
+            "frame": {
+                "x": 3456,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieN5",
+            "frame": {
+                "x": 3584,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieN6",
+            "frame": {
+                "x": 3712,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN1",
+            "frame": {
+                "x": 3840,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN2",
+            "frame": {
+                "x": 3968,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN3",
+            "frame": {
+                "x": 4096,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN4",
+            "frame": {
+                "x": 4224,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN5",
+            "frame": {
+                "x": 4352,
+                "y": 256,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN6",
+            "frame": {
+                "x": 0,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN7",
+            "frame": {
+                "x": 128,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieN8",
+            "frame": {
+                "x": 256,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNE1",
+            "frame": {
+                "x": 384,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNE2",
+            "frame": {
+                "x": 512,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNE3",
+            "frame": {
+                "x": 640,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceNE4",
+            "frame": {
+                "x": 768,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE1",
+            "frame": {
+                "x": 896,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE2",
+            "frame": {
+                "x": 1024,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE3",
+            "frame": {
+                "x": 1152,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE4",
+            "frame": {
+                "x": 1280,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE5",
+            "frame": {
+                "x": 1408,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE6",
+            "frame": {
+                "x": 1536,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE7",
+            "frame": {
+                "x": 1664,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchNE8",
+            "frame": {
+                "x": 1792,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNE1",
+            "frame": {
+                "x": 1920,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNE2",
+            "frame": {
+                "x": 2048,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNE3",
+            "frame": {
+                "x": 2176,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamNE4",
+            "frame": {
+                "x": 2304,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNE1",
+            "frame": {
+                "x": 2432,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNE2",
+            "frame": {
+                "x": 2560,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNE3",
+            "frame": {
+                "x": 2688,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteNE4",
+            "frame": {
+                "x": 2816,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockNE1",
+            "frame": {
+                "x": 2944,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockNE2",
+            "frame": {
+                "x": 3072,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNE1",
+            "frame": {
+                "x": 3200,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNE2",
+            "frame": {
+                "x": 3328,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNE3",
+            "frame": {
+                "x": 3456,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNE4",
+            "frame": {
+                "x": 3584,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNE5",
+            "frame": {
+                "x": 3712,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieNE6",
+            "frame": {
+                "x": 3840,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE1",
+            "frame": {
+                "x": 3968,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE2",
+            "frame": {
+                "x": 4096,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE3",
+            "frame": {
+                "x": 4224,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE4",
+            "frame": {
+                "x": 4352,
+                "y": 384,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE5",
+            "frame": {
+                "x": 0,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE6",
+            "frame": {
+                "x": 128,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE7",
+            "frame": {
+                "x": 256,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieNE8",
+            "frame": {
+                "x": 384,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceE1",
+            "frame": {
+                "x": 512,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceE2",
+            "frame": {
+                "x": 640,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceE3",
+            "frame": {
+                "x": 768,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceE4",
+            "frame": {
+                "x": 896,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE1",
+            "frame": {
+                "x": 1024,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE2",
+            "frame": {
+                "x": 1152,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE3",
+            "frame": {
+                "x": 1280,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE4",
+            "frame": {
+                "x": 1408,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE5",
+            "frame": {
+                "x": 1536,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE6",
+            "frame": {
+                "x": 1664,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE7",
+            "frame": {
+                "x": 1792,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchE8",
+            "frame": {
+                "x": 1920,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamE1",
+            "frame": {
+                "x": 2048,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamE2",
+            "frame": {
+                "x": 2176,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamE3",
+            "frame": {
+                "x": 2304,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamE4",
+            "frame": {
+                "x": 2432,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteE1",
+            "frame": {
+                "x": 2560,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteE2",
+            "frame": {
+                "x": 2688,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteE3",
+            "frame": {
+                "x": 2816,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteE4",
+            "frame": {
+                "x": 2944,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockE1",
+            "frame": {
+                "x": 3072,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockE2",
+            "frame": {
+                "x": 3200,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieE1",
+            "frame": {
+                "x": 3328,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieE2",
+            "frame": {
+                "x": 3456,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieE3",
+            "frame": {
+                "x": 3584,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieE4",
+            "frame": {
+                "x": 3712,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieE5",
+            "frame": {
+                "x": 3840,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieE6",
+            "frame": {
+                "x": 3968,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE1",
+            "frame": {
+                "x": 4096,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE2",
+            "frame": {
+                "x": 4224,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE3",
+            "frame": {
+                "x": 4352,
+                "y": 512,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE4",
+            "frame": {
+                "x": 0,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE5",
+            "frame": {
+                "x": 128,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE6",
+            "frame": {
+                "x": 256,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE7",
+            "frame": {
+                "x": 384,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieE8",
+            "frame": {
+                "x": 512,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceSE1",
+            "frame": {
+                "x": 640,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceSE2",
+            "frame": {
+                "x": 768,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceSE3",
+            "frame": {
+                "x": 896,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceSE4",
+            "frame": {
+                "x": 1024,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE1",
+            "frame": {
+                "x": 1152,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE2",
+            "frame": {
+                "x": 1280,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE3",
+            "frame": {
+                "x": 1408,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE4",
+            "frame": {
+                "x": 1536,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE5",
+            "frame": {
+                "x": 1664,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE6",
+            "frame": {
+                "x": 1792,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE7",
+            "frame": {
+                "x": 1920,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchSE8",
+            "frame": {
+                "x": 2048,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamSE1",
+            "frame": {
+                "x": 2176,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamSE2",
+            "frame": {
+                "x": 2304,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamSE3",
+            "frame": {
+                "x": 2432,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamSE4",
+            "frame": {
+                "x": 2560,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteSE1",
+            "frame": {
+                "x": 2688,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteSE2",
+            "frame": {
+                "x": 2816,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteSE3",
+            "frame": {
+                "x": 2944,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteSE4",
+            "frame": {
+                "x": 3072,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockSE1",
+            "frame": {
+                "x": 3200,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockSE2",
+            "frame": {
+                "x": 3328,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieSE1",
+            "frame": {
+                "x": 3456,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieSE2",
+            "frame": {
+                "x": 3584,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieSE3",
+            "frame": {
+                "x": 3712,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieSE4",
+            "frame": {
+                "x": 3840,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieSE5",
+            "frame": {
+                "x": 3968,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieSE6",
+            "frame": {
+                "x": 4096,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE1",
+            "frame": {
+                "x": 4224,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE2",
+            "frame": {
+                "x": 4352,
+                "y": 640,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE3",
+            "frame": {
+                "x": 0,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE4",
+            "frame": {
+                "x": 128,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE5",
+            "frame": {
+                "x": 256,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE6",
+            "frame": {
+                "x": 384,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE7",
+            "frame": {
+                "x": 512,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieSE8",
+            "frame": {
+                "x": 640,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceS1",
+            "frame": {
+                "x": 768,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceS2",
+            "frame": {
+                "x": 896,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceS3",
+            "frame": {
+                "x": 1024,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "StanceS4",
+            "frame": {
+                "x": 1152,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS1",
+            "frame": {
+                "x": 1280,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS2",
+            "frame": {
+                "x": 1408,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS3",
+            "frame": {
+                "x": 1536,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS4",
+            "frame": {
+                "x": 1664,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS5",
+            "frame": {
+                "x": 1792,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS6",
+            "frame": {
+                "x": 1920,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS7",
+            "frame": {
+                "x": 2048,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "LurchS8",
+            "frame": {
+                "x": 2176,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamS1",
+            "frame": {
+                "x": 2304,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamS2",
+            "frame": {
+                "x": 2432,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamS3",
+            "frame": {
+                "x": 2560,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "SlamS4",
+            "frame": {
+                "x": 2688,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteS1",
+            "frame": {
+                "x": 2816,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteS2",
+            "frame": {
+                "x": 2944,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteS3",
+            "frame": {
+                "x": 3072,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BiteS4",
+            "frame": {
+                "x": 3200,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockS1",
+            "frame": {
+                "x": 3328,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "BlockS2",
+            "frame": {
+                "x": 3456,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieS1",
+            "frame": {
+                "x": 3584,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieS2",
+            "frame": {
+                "x": 3712,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieS3",
+            "frame": {
+                "x": 3840,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieS4",
+            "frame": {
+                "x": 3968,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieS5",
+            "frame": {
+                "x": 4096,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "DieS6",
+            "frame": {
+                "x": 4224,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        },
+        {
+            "filename": "XDieS1",
+            "frame": {
+                "x": 4352,
+                "y": 768,
+                "w": 128,
+                "h": 128
+            }
+        }
+    ],
+    "meta": {
+        "url": "https://opengameart.org/content/zombie-sprites",
+        "imagepath": "",
+        "json-generator": "ssmfgen.py"
+    }
+}
