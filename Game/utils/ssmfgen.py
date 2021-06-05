@@ -6,7 +6,7 @@
 # w: spritesheet width
 # h: spritesheet height
 # f: frame names, as a text file, one line per frame
-# example: python ssmfgen.py -x 128 -y 128 -w 4608 -h 1024 -f zombie_0.frames 
+# example: python ssmfgen.py -x 128 -y 128 -w 4608 -h 1024 -f zombie_0.frames -u https://opengameart.org/content/zombie-sprites
 
 import json
 import sys, getopt
@@ -37,20 +37,28 @@ def main(argv):
 		if opt == "-u":
 			url = arg
 	framesVal = []
+
 	with open(inputfile) as f:
 		frameNames = list(map(lambda s : s.rstrip(), f))
+
+	numLabels = len(frameNames)
+	if (numLabels != _w / _x * _h / _y):
+		useIndex = True;
+	else: 
+		useIndex = False;
 	index = 0
-	for y in range(_y, _h, _y):
-		for x in range (_x, _w, _x):
+	for y in range(0, _h, _y):
+		for x in range (0, _w, _x):
 			frameVal = {
-			"x": x-_x,
-			"y": y-_y,
+			"x": x,
+			"y": y,
 			"w": _x,
 			"h": _y
 			}
+			print (frameVal, index);
 			frameObj = {
 			#index out of bounds ahoy
-			"filename" : str(frameNames[index]),
+			"filename" : str(index if useIndex else frameNames[index]),
 			"frame" : frameVal
 			}
 			index += 1
