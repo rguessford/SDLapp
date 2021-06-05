@@ -44,8 +44,10 @@ def main(argv):
 	numLabels = len(frameNames)
 	if (numLabels != _w / _x * _h / _y):
 		useIndex = True;
+		print("numer of labels does not match number of frames. using index as frame name.")
 	else: 
 		useIndex = False;
+
 	index = 0
 	for y in range(0, _h, _y):
 		for x in range (0, _w, _x):
@@ -55,7 +57,6 @@ def main(argv):
 			"w": _x,
 			"h": _y
 			}
-			print (frameVal, index);
 			frameObj = {
 			#index out of bounds ahoy
 			"filename" : str(index if useIndex else frameNames[index]),
