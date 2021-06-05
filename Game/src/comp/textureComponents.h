@@ -18,8 +18,15 @@ struct tileMapRenderer {
 	}
 };
 
+enum spriteSheetNameEnum {
+	CUBES,ZOMBIE_0
+};
+
 struct spriteSheet {
+	spriteSheetNameEnum name;
 	SDL_Texture* texture;
-	std::vector<SDL_Rect> frameMapping;
+	std::shared_ptr<std::vector<SDL_Rect>> frameMapping;
 	int size;
+//for static sprites, specify a default framemapping
+//animation component to control which frame to render
 };

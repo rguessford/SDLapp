@@ -2,6 +2,8 @@
 #include <SDL_image.h>
 #include <iostream>
 
+//TODO: wrap in texture cache
+
 SDL_Texture* loadTexture(const char* path, Renderer& renderer)
 {
 	//The final texture

@@ -53,7 +53,7 @@
     <ClInclude Include="src\core\Window.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\comp\tileMapComponents.h">
+    <ClInclude Include="src\comp\textureComponents.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\util\entityFactories.h">
@@ -66,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sys\TileManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\comp\actorComponents.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

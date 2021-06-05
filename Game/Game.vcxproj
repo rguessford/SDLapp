@@ -29,7 +29,8 @@
     <ClCompile Include="src\sys\TileManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\comp\tileMapComponents.h" />
+    <ClInclude Include="src\comp\actorComponents.h" />
+    <ClInclude Include="src\comp\textureComponents.h" />
     <ClInclude Include="src\core\Events.h" />
     <ClInclude Include="src\util\entityFactories.h" />
     <ClInclude Include="src\core\Renderer.h" />

@@ -25,6 +25,7 @@ int main(int argc, char* args[])
 		entt::registry registry;
 
 		makeTilemap(registry, renderer);
+		
 
 		TileManager tileManager(registry, renderer);
 		unsigned int lastTime = 0, currentTime, deltaTime;
