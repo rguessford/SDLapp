@@ -2,6 +2,7 @@
 #include "core/Window.h"
 #include "core/Renderer.h"
 #include "core/Events.h"
+#include "core/textureCache.h"
 
 #include "util/entityFactories.h"
 #include "sys/TileManager.h"
@@ -23,8 +24,8 @@ int main(int argc, char* args[])
 		Renderer renderer(window);
 		Events events;
 		entt::registry registry;
-
-		makeTilemap(registry, renderer);
+		TextureCache textureCache(renderer);
+		makeTilemap(registry, textureCache);
 		
 
 		TileManager tileManager(registry, renderer);

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -24,9 +24,9 @@
     <ClCompile Include="src\core\Renderer.cpp" />
     <ClCompile Include="src\core\SDLApplication.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\util\sdl_load_texture.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
     <ClCompile Include="src\sys\TileManager.cpp" />
+    <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\comp\actorComponents.h" />
@@ -36,9 +36,9 @@
     <ClInclude Include="src\core\Renderer.h" />
     <ClInclude Include="src\core\SDLApplication.h" />
     <ClInclude Include="src\sys\System.h" />
-    <ClInclude Include="src\util\sdl_load_texture.h" />
     <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\sys\TileManager.h" />
+    <ClInclude Include="src\core\TextureCache.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

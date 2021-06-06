@@ -1,7 +1,7 @@
 #pragma once
-#include "core/Renderer.h"
+#include "core/TextureCache.h"
+
 #include <entt/entity/registry.hpp>
 
-entt::entity makeTilemap(entt::registry&, Renderer&);
-
-std::string loadJsonSpritesheetManifest(std::vector<SDL_Rect>&, std::string);
+entt::entity makeTilemap(entt::registry&, TextureCache&);
+entt::entity makeZombie(entt::registry&, TextureCache&);

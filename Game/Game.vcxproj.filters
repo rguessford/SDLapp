@@ -33,10 +33,10 @@
     <ClCompile Include="src\util\entityFactories.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\util\sdl_load_texture.cpp">
+    <ClCompile Include="src\sys\TileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\sys\TileManager.cpp">
+    <ClCompile Include="src\core\TextureCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,9 +59,6 @@
     <ClInclude Include="src\util\entityFactories.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\sdl_load_texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\sys\System.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -69,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\comp\actorComponents.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\TextureCache.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
