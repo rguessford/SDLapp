@@ -12,7 +12,7 @@ void TileManager::update(float dt) {
 				SDL_RenderCopy(mRenderer, drawable.texutreDetails->texture, &drawable.texutreDetails->frameMapping->at(mapRenderer.tileMap[j][i]), &renderquad);
 			}
 		}
-		});
+	});
 }
 
 TileManager::TileManager(entt::registry& registry, Renderer& renderer) :System(registry, renderer) {}

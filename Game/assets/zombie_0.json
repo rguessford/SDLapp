@@ -2595,7 +2595,7 @@
     ],
     "meta": {
         "url": "https://opengameart.org/content/zombie-sprites",
-        "image": "zombie_0.json",
+        "image": "zombie_0.PNG",
         "json-generator": "ssmfgen.py",
         "origin-foot-offset":{
             "x":63,

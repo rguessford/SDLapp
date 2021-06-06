@@ -6,6 +6,7 @@
 
 #include "util/entityFactories.h"
 #include "sys/TileManager.h"
+#include "sys/RenderSystem.h"
 
 #include <iostream>
 #include <entt/entity/registry.hpp>
@@ -26,7 +27,8 @@ int main(int argc, char* args[])
 		entt::registry registry;
 		TextureCache textureCache(renderer);
 		makeTilemap(registry, textureCache);
-		
+		makeZombie(registry, textureCache);
+		RenderSystem renderSystem(registry, renderer);
 
 		TileManager tileManager(registry, renderer);
 		unsigned int lastTime = 0, currentTime, deltaTime;
@@ -35,6 +37,7 @@ int main(int argc, char* args[])
 			deltaTime = currentTime - lastTime;
 			renderer.clearScreen(0, 0, 0, 0);
 			tileManager.update(deltaTime);
+			renderSystem.update(deltaTime);
 			renderer.update();
 		}
 	}

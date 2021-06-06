@@ -22,7 +22,7 @@ entt::entity makeTilemap(entt::registry& reg, TextureCache& texCache)
 
 entt::entity makeZombie(entt::registry& reg, TextureCache& texCache) {
 	auto zombie = reg.create();
-	reg.emplace<drawable>(zombie, texCache.getTexture(textureNameEnum::CUBES), 0);
+	reg.emplace<drawable>(zombie, texCache.getTexture(textureNameEnum::ZOMBIE_0), 0);
 	reg.emplace<position>(zombie, 0, 0, 0);
 
 	return zombie;

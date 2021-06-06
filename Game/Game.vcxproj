@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\sys\RenderSystem.cpp" />
     <ClCompile Include="src\util\entityFactories.cpp" />
     <ClCompile Include="src\core\Events.cpp" />
     <ClCompile Include="src\core\Renderer.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="src\comp\actorComponents.h" />
     <ClInclude Include="src\comp\textureComponents.h" />
     <ClInclude Include="src\core\Events.h" />
+    <ClInclude Include="src\sys\RenderSystem.h" />
     <ClInclude Include="src\util\entityFactories.h" />
     <ClInclude Include="src\core\Renderer.h" />
     <ClInclude Include="src\core\SDLApplication.h" />

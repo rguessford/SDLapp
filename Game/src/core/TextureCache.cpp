@@ -15,7 +15,7 @@ std::shared_ptr<TextureDetails> TextureCache::getTexture(textureNameEnum texture
 	case textureNameEnum::CUBES:
 		it = Cache.find(textureNameEnum::CUBES);
 		if (it == Cache.end()) { //not found
-			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::CUBES, (SDL_Texture*)NULL, std::make_shared<std::vector<SDL_Rect>>(), emptyPoint );
+			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::CUBES, (SDL_Texture*)NULL, std::make_shared<std::vector<SDL_Rect>>(), emptyPoint);
 			std::string json = assetDir + "cubes.json";
 			loadJsonSpritesheetManifest((*textureInfo), json, renderer);
 			Cache.insert(std::pair<textureNameEnum, std::shared_ptr<TextureDetails>>(textureNameEnum::CUBES, textureInfo));
@@ -51,6 +51,12 @@ void TextureCache::loadJsonSpritesheetManifest(TextureDetails& textureInfo, std:
 	const rapidjson::Value& meta = d["meta"];
 	std::string spritesheetImagePath = assetDir + meta["image"].GetString();
 	const rapidjson::Value& frames = d["frames"];
+	
+	if (meta.HasMember("origin-foot-offset")) {
+		const rapidjson::Value& foot = meta["origin-foot-offset"];
+		textureInfo.foot.x = foot["x"].GetInt();
+		textureInfo.foot.y = foot["y"].GetInt();
+	}
 
 	assert(frames.IsArray());
 	const rapidjson::GenericArray frameArray = frames.GetArray();

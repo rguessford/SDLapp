@@ -14,7 +14,7 @@ enum class textureNameEnum {
 };
 
 struct TextureDetails {
-	TextureDetails() {};
+	TextureDetails() :name(), texture(), frameMapping(), foot() {};
 	TextureDetails(textureNameEnum name, SDL_Texture* texture, std::shared_ptr <std::vector<SDL_Rect>> frameMapping, SDL_Point foot) :
 		name(name), texture(texture), frameMapping(frameMapping), foot(foot) {};
 	textureNameEnum name;//textureNameEnum
