@@ -4,6 +4,7 @@
 class TileManager :
 	public System
 {
+	Renderer& mRenderer;
 public:
 	void update(float dt);
 	TileManager(entt::registry&, Renderer&);

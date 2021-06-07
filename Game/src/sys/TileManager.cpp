@@ -15,4 +15,4 @@ void TileManager::update(float dt) {
 	});
 }
 
-TileManager::TileManager(entt::registry& registry, Renderer& renderer) :System(registry, renderer) {}
+TileManager::TileManager(entt::registry& registry, Renderer& renderer) :System(registry), mRenderer(renderer) {}

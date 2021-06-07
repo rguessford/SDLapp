@@ -4,7 +4,7 @@
 class System
 {
 public:
-	explicit System(entt::registry& registry, Renderer& renderer) : mRegistry(registry), mRenderer(renderer) {}
+	explicit System(entt::registry& registry) : mRegistry(registry) {}
 
 	virtual void update(float dt) {};
 
@@ -12,6 +12,6 @@ public:
 
 protected:
 	entt::registry& mRegistry;
-	Renderer& mRenderer;
+	
 	inline static bool sPause = false;
 };

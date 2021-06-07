@@ -1,7 +1,7 @@
 #include "RenderSystem.h"
 #include "comp/textureComponents.h"
 #include "comp/actorComponents.h"
-RenderSystem::RenderSystem(entt::registry& registry, Renderer& renderer) :System(registry, renderer) {}
+RenderSystem::RenderSystem(entt::registry& registry, Renderer& renderer) :System(registry), mRenderer(renderer) {}
 
 
 
