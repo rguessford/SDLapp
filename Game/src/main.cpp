@@ -7,6 +7,7 @@
 #include "util/entityFactories.h"
 #include "sys/TileManager.h"
 #include "sys/RenderSystem.h"
+#include "sys/AnimationSystem.h"
 
 #include <iostream>
 #include <entt/entity/registry.hpp>
@@ -32,14 +33,17 @@ int main(int argc, char* args[])
 		makeZombie(registry, textureCache, animationRepository);
 
 		RenderSystem renderSystem(registry, renderer);
+		AnimationSystem animationSystem(registry);
 
 		TileManager tileManager(registry, renderer);
-		unsigned int lastTime = 0, currentTime, deltaTime;
+		float lastTime = 0.0f, currentTime, deltaTime;
 		while (events.handleEvents()) {
 			currentTime = SDL_GetTicks();
 			deltaTime = currentTime - lastTime;
+			lastTime = currentTime;
 			renderer.clearScreen(0, 0, 0, 0);
 			tileManager.update(deltaTime);
+			animationSystem.update(deltaTime);
 			renderSystem.update(deltaTime);
 			renderer.update();
 		}

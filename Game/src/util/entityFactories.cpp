@@ -22,6 +22,6 @@ entt::entity makeZombie(entt::registry& reg, TextureCache& texCache, AnimationRe
 	auto zombie = reg.create();
 	reg.emplace<drawable>(zombie, texCache.getTexture(textureNameEnum::ZOMBIE_0), 0);
 	reg.emplace<position>(zombie, 0, 0, 0);
-	reg.emplace<animation>(zombie, 0, 0, animRepo.getAnimation(animationEnum::ZOMBIE_0), 36);
+	reg.emplace<animation>(zombie, 0, direction::W, 0, animRepo.getAnimation(animationEnum::ZOMBIE_0), 36, false, 0.0f, 100.0f);
 	return zombie;
 }

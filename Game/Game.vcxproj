@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\sys\AnimationSystem.cpp" />
     <ClCompile Include="src\core\AnimationRepository.cpp" />
     <ClCompile Include="src\sys\RenderSystem.cpp" />
     <ClCompile Include="src\util\entityFactories.cpp" />
@@ -31,6 +32,7 @@
     <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\sys\AnimationSystem.h" />
     <ClInclude Include="src\comp\actorComponents.h" />
     <ClInclude Include="src\comp\textureComponents.h" />
     <ClInclude Include="src\core\AnimationRepository.h" />

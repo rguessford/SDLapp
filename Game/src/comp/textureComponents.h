@@ -26,7 +26,7 @@ struct tileMapRenderer {
 
 struct drawable {
 	//i would have liked to just use the textureDetails themselves as components but components get destroyed
-	std::shared_ptr<TextureDetails> texutreDetails;
+	std::shared_ptr<TextureDetails> textureDetails;
 	int currentFrame;
 };
 
@@ -40,17 +40,23 @@ enum zombieAnimationEnum {
 	DEATH2
 };
 
-enum class direction {
+enum direction {
 	W, NW, N, NE, E, SE, S, SW
 };
 
 struct animation {
 	int currentAnimationId;
 	int animationDirection;
-
+	int currentFrame;
+	
 	//current frame needs to be bounded by animations.[animationEnum].size
 	std::shared_ptr<std::vector<std::vector<int>>> animations;
 	int animationDirectionOffset = 0;
+	bool prevState = false; // placeholder
+
+	//animation lengths per animation needed
+	float animationTimer;
+	float animationLength;
 
 };
 

@@ -27,7 +27,7 @@ std::shared_ptr<TextureDetails> TextureCache::getTexture(textureNameEnum texture
 	case textureNameEnum::ZOMBIE_0:
 		it = Cache.find(textureNameEnum::ZOMBIE_0);
 		if (it == Cache.end()) { //not found
-			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::CUBES, (SDL_Texture*)NULL, std::make_shared<std::vector<SDL_Rect>>(), emptyPoint);
+			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::ZOMBIE_0, (SDL_Texture*)NULL, std::make_shared<std::vector<SDL_Rect>>(), emptyPoint);
 			std::string json = assetDir + "zombie_0.json";
 			loadJsonSpritesheetManifest((*textureInfo), json, renderer);
 			Cache.insert(std::pair<textureNameEnum, std::shared_ptr<TextureDetails>>(textureNameEnum::ZOMBIE_0, textureInfo));
