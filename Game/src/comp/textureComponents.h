@@ -30,5 +30,29 @@ struct drawable {
 	int currentFrame;
 };
 
+enum zombieAnimationEnum {
+	IDLE,
+	WALK,
+	ATTACK,
+	ATTACK2,
+	BLOCK,
+	DEATH,
+	DEATH2
+};
+
+enum class direction {
+	W, NW, N, NE, E, SE, S, SW
+};
+
+struct animation {
+	int currentAnimationId;
+	int animationDirection;
+
+	//current frame needs to be bounded by animations.[animationEnum].size
+	std::shared_ptr<std::vector<std::vector<int>>> animations;
+	int animationDirectionOffset = 0;
+
+};
+
 //for static sprites, specify a default framemapping
 //animation component to control which frame to render

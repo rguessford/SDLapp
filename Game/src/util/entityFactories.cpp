@@ -8,8 +8,6 @@
 #include <memory>
 #include <vector>
 
-
-
 //creates an entity to represent and draw a tilemap
 entt::entity makeTilemap(entt::registry& reg, TextureCache& texCache)
 {
@@ -20,10 +18,10 @@ entt::entity makeTilemap(entt::registry& reg, TextureCache& texCache)
 	return tilemapEntity;
 }
 
-entt::entity makeZombie(entt::registry& reg, TextureCache& texCache) {
+entt::entity makeZombie(entt::registry& reg, TextureCache& texCache, AnimationRepository& animRepo) {
 	auto zombie = reg.create();
 	reg.emplace<drawable>(zombie, texCache.getTexture(textureNameEnum::ZOMBIE_0), 0);
 	reg.emplace<position>(zombie, 0, 0, 0);
-
+	reg.emplace<animation>(zombie, 0, 0, animRepo.getAnimation(animationEnum::ZOMBIE_0), 36);
 	return zombie;
 }

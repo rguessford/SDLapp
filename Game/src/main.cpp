@@ -26,8 +26,11 @@ int main(int argc, char* args[])
 		Events events;
 		entt::registry registry;
 		TextureCache textureCache(renderer);
+		AnimationRepository animationRepository;
+
 		makeTilemap(registry, textureCache);
-		makeZombie(registry, textureCache);
+		makeZombie(registry, textureCache, animationRepository);
+
 		RenderSystem renderSystem(registry, renderer);
 
 		TileManager tileManager(registry, renderer);
