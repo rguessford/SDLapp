@@ -20,7 +20,7 @@ void AnimationSystem::update(double dt)
 			//check if the curent animation should be playing. if not, reset currentFrame
 			animation.currentAnimationId = WALK;
 
-			if (animation.prevState) {
+			if (animation.prevAnim == animation.currentAnimationId && animation.prevDir == animation.animationDirection) {
 				//advance frame
 				if (animation.animationTimer > animation.animationLength) {
 					animation.currentFrame = (animation.currentFrame + 1) % (*animation.animations)[animation.currentAnimationId].size();
@@ -32,7 +32,8 @@ void AnimationSystem::update(double dt)
 				}
 			} else {
 				animation.currentFrame = 0;
-				animation.prevState = true;
+				animation.prevDir = animation.animationDirection;
+				animation.prevAnim = animation.currentAnimationId;
 			}
 			
 

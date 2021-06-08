@@ -51,13 +51,16 @@ struct animation {
 	
 	//current frame needs to be bounded by animations.[animationEnum].size
 	std::shared_ptr<std::vector<std::vector<int>>> animations;
+
+	//number of frames per direction
 	int animationDirectionOffset = 0;
-	bool prevState = false; // placeholder
 
 	//animation lengths per animation needed
 	double animationTimer;
 	double animationLength;
 
+	int prevAnim = currentAnimationId; // placeholder
+	int prevDir = animationDirection;
 };
 
 //for static sprites, specify a default framemapping
