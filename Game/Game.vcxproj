@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\sys\CameraSystem.cpp" />
     <ClCompile Include="src\sys\AnimationSystem.cpp" />
     <ClCompile Include="src\core\AnimationRepository.cpp" />
     <ClCompile Include="src\sys\RenderSystem.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\sys\CameraSystem.h" />
     <ClInclude Include="src\sys\AnimationSystem.h" />
     <ClInclude Include="src\comp\actorComponents.h" />
     <ClInclude Include="src\comp\textureComponents.h" />
@@ -45,6 +47,7 @@
     <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\sys\TileManager.h" />
     <ClInclude Include="src\core\TextureCache.h" />
+    <ClInclude Include="src\util\isomath.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

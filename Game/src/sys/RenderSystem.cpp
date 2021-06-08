@@ -2,6 +2,7 @@
 #include "comp/textureComponents.h"
 #include "comp/actorComponents.h"
 #include <iostream>
+#include <util/isomath.h>
 RenderSystem::RenderSystem(entt::registry& registry, Renderer& renderer) :System(registry), mRenderer(renderer) {}
 
 void RenderSystem::update(double dt) {
@@ -10,7 +11,7 @@ void RenderSystem::update(double dt) {
 
 			//animationsystem has run
 			SDL_Rect renderquad = { position.x , position.y,128,128 };
-			mRenderer.twoDToIso(&renderquad);
+			twoDToIso(&renderquad);
 			renderquad.x -= drawable.textureDetails->foot.x;
 			renderquad.y -= drawable.textureDetails->foot.y;
 			renderquad.x += campos.xOffset;

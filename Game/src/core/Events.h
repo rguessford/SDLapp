@@ -1,10 +1,11 @@
 #pragma once
 #include "SDL.h"
+#include<entt/entity/registry.hpp>
 
 class Events
 {
 public:
-	bool handleEvents();
+	bool handleEvents(double dt, entt::registry&);
 
 
 private:

@@ -1,9 +1,11 @@
 #pragma once
 
 struct position {
-	int x, y, z;
+	float x, y, z;
 };
 
 struct camera {
 	int xOffset, yOffset;
 };
+
+struct keyboardController {};

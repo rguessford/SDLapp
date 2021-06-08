@@ -8,6 +8,7 @@
 #include "sys/TileManager.h"
 #include "sys/RenderSystem.h"
 #include "sys/AnimationSystem.h"
+#include "sys/CameraSystem.h"
 #include "comp/actorComponents.h"
 
 #include <iostream>
@@ -38,15 +39,17 @@ int main(int argc, char* args[])
 
 		RenderSystem renderSystem(registry, renderer);
 		AnimationSystem animationSystem(registry);
+		CameraSystem cameraSystem(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 , registry);
 
 		TileManager tileManager(registry, renderer);
 		std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
 		std::chrono::duration<double> deltaTime;
-		while (events.handleEvents()) {
+		while (events.handleEvents(deltaTime.count(), registry)) {
 			currentTime = std::chrono::steady_clock::now();
 			deltaTime = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - lastTime);
 			lastTime = currentTime;
 			renderer.clearScreen(0, 0, 0, 0);
+			cameraSystem.update(deltaTime.count());
 			tileManager.update(deltaTime.count());
 			animationSystem.update(deltaTime.count());
 			renderSystem.update(deltaTime.count());
