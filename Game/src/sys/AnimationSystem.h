@@ -6,6 +6,6 @@ class AnimationSystem :
 {
 public:
     AnimationSystem(entt::registry&);
-    void update(float dt);
+    void update(double dt);
 };
 

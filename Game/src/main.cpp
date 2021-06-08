@@ -8,10 +8,11 @@
 #include "sys/TileManager.h"
 #include "sys/RenderSystem.h"
 #include "sys/AnimationSystem.h"
+#include "comp/actorComponents.h"
 
 #include <iostream>
 #include <entt/entity/registry.hpp>
-
+#include <chrono>
 #include <SDL.h>
 
 const int SCREEN_WIDTH = 1600;
@@ -28,23 +29,27 @@ int main(int argc, char* args[])
 		entt::registry registry;
 		TextureCache textureCache(renderer);
 		AnimationRepository animationRepository;
+		std::chrono::steady_clock;
+
+		camera cam = { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 
 		makeTilemap(registry, textureCache);
-		makeZombie(registry, textureCache, animationRepository);
+		makeZombie(0,0,registry, textureCache, animationRepository, cam);
 
 		RenderSystem renderSystem(registry, renderer);
 		AnimationSystem animationSystem(registry);
 
 		TileManager tileManager(registry, renderer);
-		float lastTime = 0.0f, currentTime, deltaTime;
+		std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
+		std::chrono::duration<double> deltaTime;
 		while (events.handleEvents()) {
-			currentTime = SDL_GetTicks();
-			deltaTime = currentTime - lastTime;
+			currentTime = std::chrono::steady_clock::now();
+			deltaTime = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - lastTime);
 			lastTime = currentTime;
 			renderer.clearScreen(0, 0, 0, 0);
-			tileManager.update(deltaTime);
-			animationSystem.update(deltaTime);
-			renderSystem.update(deltaTime);
+			tileManager.update(deltaTime.count());
+			animationSystem.update(deltaTime.count());
+			renderSystem.update(deltaTime.count());
 			renderer.update();
 		}
 	}

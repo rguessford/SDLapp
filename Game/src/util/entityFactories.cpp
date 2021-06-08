@@ -18,10 +18,15 @@ entt::entity makeTilemap(entt::registry& reg, TextureCache& texCache)
 	return tilemapEntity;
 }
 
-entt::entity makeZombie(entt::registry& reg, TextureCache& texCache, AnimationRepository& animRepo) {
+entt::entity makeZombie(int x, int y, entt::registry& reg, TextureCache& texCache, AnimationRepository& animRepo, camera cam = { 0,0 }) {
 	auto zombie = reg.create();
 	reg.emplace<drawable>(zombie, texCache.getTexture(textureNameEnum::ZOMBIE_0), 0);
-	reg.emplace<position>(zombie, 0, 0, 0);
-	reg.emplace<animation>(zombie, 0, direction::W, 0, animRepo.getAnimation(animationEnum::ZOMBIE_0), 36, false, 0.0f, 100.0f);
+	reg.emplace<position>(zombie, x, y, 0);
+	reg.emplace<animation>(zombie, 0, direction::W, 0, animRepo.getAnimation(animationEnum::ZOMBIE_0), 36, false, 0.0, 0.250);
+	if (cam.xOffset + cam.yOffset != 0) {
+		auto& newcam = reg.emplace<camera>(zombie);
+		newcam.xOffset = cam.xOffset;
+		newcam.yOffset = cam.yOffset;
+	}
 	return zombie;
 }

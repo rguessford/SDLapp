@@ -55,8 +55,8 @@ struct animation {
 	bool prevState = false; // placeholder
 
 	//animation lengths per animation needed
-	float animationTimer;
-	float animationLength;
+	double animationTimer;
+	double animationLength;
 
 };
 

@@ -6,8 +6,9 @@
 
 AnimationSystem::AnimationSystem(entt::registry& registry) : System(registry) {}
 
-void AnimationSystem::update(float dt)
-{
+void AnimationSystem::update(double dt)
+ {
+	std::cout << dt <<" ";
 	mRegistry.view<drawable, animation>().each([&](auto& drawable, auto& animation) {
 		switch (drawable.textureDetails->name) {
 		case textureNameEnum::ZOMBIE_0:
@@ -26,7 +27,7 @@ void AnimationSystem::update(float dt)
 					animation.animationTimer = 0.0f;
 				}
 				// turn direction
-				if (!animation.currentFrame && animation.animationTimer ==0.0f) {
+				if (!animation.currentFrame && animation.animationTimer ==0.0) {
 					animation.animationDirection = (animation.animationDirection+1) % 8;
 				}
 			} else {

@@ -6,6 +6,6 @@ class TileManager :
 {
 	Renderer& mRenderer;
 public:
-	void update(float dt);
+	void update(double dt);
 	TileManager(entt::registry&, Renderer&);
 };

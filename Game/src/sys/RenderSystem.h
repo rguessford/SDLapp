@@ -5,5 +5,5 @@ class RenderSystem : System {
 	Renderer& mRenderer;
 	public:
 		RenderSystem(entt::registry& registry, Renderer& renderer);
-		void update(float dt);
+		void update(double dt);
 };
