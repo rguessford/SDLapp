@@ -1,14 +1,11 @@
 #include "AnimationSystem.h"
 #include "comp/textureComponents.h"
 #include "core/TextureCache.h"
-#include <iostream>
-#include <iomanip>
 
 AnimationSystem::AnimationSystem(entt::registry& registry) : System(registry) {}
 
 void AnimationSystem::update(double dt)
  {
-	std::cout << dt <<" ";
 	mRegistry.view<drawable, animation>().each([&](auto& drawable, auto& animation) {
 		switch (drawable.textureDetails->name) {
 		case textureNameEnum::ZOMBIE_0:

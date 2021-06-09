@@ -29,7 +29,6 @@
     <ClCompile Include="src\core\SDLApplication.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\core\Window.cpp" />
-    <ClCompile Include="src\sys\TileManager.cpp" />
     <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -45,7 +44,6 @@
     <ClInclude Include="src\core\SDLApplication.h" />
     <ClInclude Include="src\sys\System.h" />
     <ClInclude Include="src\core\Window.h" />
-    <ClInclude Include="src\sys\TileManager.h" />
     <ClInclude Include="src\core\TextureCache.h" />
     <ClInclude Include="src\util\isomath.h" />
   </ItemGroup>

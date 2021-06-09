@@ -12,19 +12,19 @@ bool Events::handleEvents(double dt, entt::registry& reg)
         const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
         if (currentKeyStates[SDL_SCANCODE_UP])
         {
-            pos.y--;
+            pos.y-=2;
         }
         else if (currentKeyStates[SDL_SCANCODE_DOWN])
         {
-            pos.y++;
+            pos.y+=2;
         }
         else if (currentKeyStates[SDL_SCANCODE_LEFT])
         {
-            pos.x--;
+            pos.x-=2;
         }
         else if (currentKeyStates[SDL_SCANCODE_RIGHT])
         {
-            pos.x++;
+            pos.x+=2;
         }
     });
 	return true;

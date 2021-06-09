@@ -33,9 +33,6 @@
     <ClCompile Include="src\util\entityFactories.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\sys\TileManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\TextureCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,9 +69,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sys\System.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\sys\TileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\comp\actorComponents.h">

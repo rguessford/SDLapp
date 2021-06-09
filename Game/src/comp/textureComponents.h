@@ -14,8 +14,8 @@ struct TextureDetails;
 
 
 struct tileMapRenderer {
+	//wow what is this? refactor this to use vectors.
 	std::unique_ptr<std::unique_ptr<int[]>[]> tileMap;
-	//height is rows, width is cols
 	tileMapRenderer(int width, int height) {
 		tileMap = std::make_unique<std::unique_ptr<int[]>[]>(height);
 		for (int i = 0; i < height; i++) {
@@ -25,9 +25,9 @@ struct tileMapRenderer {
 };
 
 struct drawable {
-	//i would have liked to just use the textureDetails themselves as components but components get destroyed
 	std::shared_ptr<TextureDetails> textureDetails;
 	int currentFrame;
+	bool visible = true;
 };
 
 enum zombieAnimationEnum {

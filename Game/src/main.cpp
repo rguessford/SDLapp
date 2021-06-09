@@ -5,7 +5,6 @@
 #include "core/textureCache.h"
 
 #include "util/entityFactories.h"
-#include "sys/TileManager.h"
 #include "sys/RenderSystem.h"
 #include "sys/AnimationSystem.h"
 #include "sys/CameraSystem.h"
@@ -30,18 +29,23 @@ int main(int argc, char* args[])
 		entt::registry registry;
 		TextureCache textureCache(renderer);
 		AnimationRepository animationRepository;
-		std::chrono::steady_clock;
 
 		camera cam = { SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 
 		makeTilemap(registry, textureCache);
 		makeZombie(0,0,registry, textureCache, animationRepository, cam);
+		for (int i = 0; i < 100; i++) {
+			for (int j = 0; j < 33; j++) {
+				makeZombie(i*32, j*32, registry, textureCache, animationRepository);
+			}
+		}
+		
 
 		RenderSystem renderSystem(registry, renderer);
 		AnimationSystem animationSystem(registry);
 		CameraSystem cameraSystem(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 , registry);
 
-		TileManager tileManager(registry, renderer);
+
 		std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
 		std::chrono::duration<double> deltaTime;
 		while (events.handleEvents(deltaTime.count(), registry)) {
@@ -50,8 +54,10 @@ int main(int argc, char* args[])
 			lastTime = currentTime;
 			renderer.clearScreen(0, 0, 0, 0);
 			cameraSystem.update(deltaTime.count());
-			tileManager.update(deltaTime.count());
 			animationSystem.update(deltaTime.count());
+			//animationSystem comes before movement system. 
+			
+			//animationsystem relies on the presence of command components and the movement system removes those.
 			renderSystem.update(deltaTime.count());
 			renderer.update();
 		}
