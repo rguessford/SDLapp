@@ -1,5 +1,6 @@
 #pragma once
 #include "sys/System.h"
+#include <SDL_gpu.h>
 
 class RenderSystem : System {
 	Renderer& mRenderer;

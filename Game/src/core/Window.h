@@ -1,12 +1,13 @@
 #pragma once
 #include <SDL.h>
+#include <SDL_gpu.h>
 class Window
 {
 public:
 	Window(int width, int height);
 	~Window();
 
-	operator SDL_Window* () { return pWindow; }
+	operator GPU_Target* () { return pWindow; }
 
 	Window(Window const&) = delete;
 	Window(Window&& other) noexcept {
@@ -21,5 +22,5 @@ public:
 		return *this;
 	}
 private:
-	SDL_Window* pWindow;
+	GPU_Target* pWindow;
 };

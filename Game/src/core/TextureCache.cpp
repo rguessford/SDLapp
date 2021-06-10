@@ -15,7 +15,7 @@ std::shared_ptr<TextureDetails> TextureCache::getTexture(textureNameEnum texture
 	case textureNameEnum::CUBES:
 		it = Cache.find(textureNameEnum::CUBES);
 		if (it == Cache.end()) { //not found
-			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::CUBES, (SDL_Texture*)NULL, std::make_shared<std::vector<SDL_Rect>>(), emptyPoint);
+			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::CUBES, (GPU_Image*)NULL, std::make_shared<std::vector<GPU_Rect>>(), emptyPoint);
 			std::string json = assetDir + "cubes.json";
 			loadJsonSpritesheetManifest((*textureInfo), json, renderer);
 			Cache.insert(std::pair<textureNameEnum, std::shared_ptr<TextureDetails>>(textureNameEnum::CUBES, textureInfo));
@@ -27,7 +27,7 @@ std::shared_ptr<TextureDetails> TextureCache::getTexture(textureNameEnum texture
 	case textureNameEnum::ZOMBIE_0:
 		it = Cache.find(textureNameEnum::ZOMBIE_0);
 		if (it == Cache.end()) { //not found
-			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::ZOMBIE_0, (SDL_Texture*)NULL, std::make_shared<std::vector<SDL_Rect>>(), emptyPoint);
+			textureInfo = std::make_shared<TextureDetails>(textureNameEnum::ZOMBIE_0, (GPU_Image*)NULL, std::make_shared<std::vector<GPU_Rect>>(), emptyPoint);
 			std::string json = assetDir + "zombie_0.json";
 			loadJsonSpritesheetManifest((*textureInfo), json, renderer);
 			Cache.insert(std::pair<textureNameEnum, std::shared_ptr<TextureDetails>>(textureNameEnum::ZOMBIE_0, textureInfo));
@@ -67,17 +67,17 @@ void TextureCache::loadJsonSpritesheetManifest(TextureDetails& textureInfo, std:
 
 	for (int i = 0; i < size; i++) {
 		const rapidjson::Value& rect = frameArray[i]["frame"];
-		const SDL_Rect frame{ rect["x"].GetInt(),rect["y"].GetInt(),rect["w"].GetInt(),rect["h"].GetInt() };
+		const GPU_Rect frame{ rect["x"].GetInt(),rect["y"].GetInt(),rect["w"].GetInt(),rect["h"].GetInt() };
 		textureInfo.frameMapping->push_back(frame);
 	}
 
 	textureInfo.texture = loadTexture(spritesheetImagePath.c_str(), renderer);
 }
 
-SDL_Texture* TextureCache::loadTexture(const char* path, Renderer& renderer)
+GPU_Image* TextureCache::loadTexture(const char* path, Renderer& renderer)
 {
 	//The final texture
-	SDL_Texture* newTexture = NULL;
+	GPU_Image* newTexture = NULL;
 
 	//Load image at specified path
 	SDL_Surface* loadedSurface = IMG_Load(path);
@@ -88,7 +88,7 @@ SDL_Texture* TextureCache::loadTexture(const char* path, Renderer& renderer)
 	else
 	{
 		//Create texture from surface pixels
-		newTexture = SDL_CreateTextureFromSurface(renderer, loadedSurface);
+		newTexture = GPU_CopyImageFromSurface(loadedSurface);
 		if (newTexture == NULL)
 		{
 			printf("Unable to create texture from %s! SDL Error: %s\n", path, SDL_GetError());

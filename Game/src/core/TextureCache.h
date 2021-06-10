@@ -5,6 +5,7 @@
 
 #include <string>
 #include <SDL.h>
+#include <SDL_gpu.h>
 #include <map>
 #include <vector>
 #include <memory>
@@ -15,11 +16,11 @@ enum class textureNameEnum {
 
 struct TextureDetails {
 	TextureDetails() :name(), texture(), frameMapping(), foot() {};
-	TextureDetails(textureNameEnum name, SDL_Texture* texture, std::shared_ptr <std::vector<SDL_Rect>> frameMapping, SDL_Point foot) :
+	TextureDetails(textureNameEnum name, GPU_Image* texture, std::shared_ptr <std::vector<GPU_Rect>> frameMapping, SDL_Point foot) :
 		name(name), texture(texture), frameMapping(frameMapping), foot(foot) {};
 	textureNameEnum name;//textureNameEnum
-	SDL_Texture* texture;
-	std::shared_ptr<std::vector<SDL_Rect>> frameMapping;
+	GPU_Image* texture;
+	std::shared_ptr<std::vector<GPU_Rect>> frameMapping;
 	SDL_Point foot;
 };
 
@@ -29,7 +30,7 @@ class TextureCache
 	std::map<textureNameEnum, std::shared_ptr<TextureDetails>> Cache;
 	Renderer& renderer;
 	void loadJsonSpritesheetManifest(TextureDetails& textureInfo, std::string filename, Renderer& renderer);
-	SDL_Texture* loadTexture(const char* path, Renderer& renderer);
+	GPU_Image* loadTexture(const char* path, Renderer& renderer);
 
 public:
 	TextureCache(Renderer& renderer) : renderer(renderer) {};

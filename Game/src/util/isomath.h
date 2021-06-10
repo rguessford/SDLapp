@@ -1,5 +1,6 @@
 #pragma once
 #include<SDL.h>
+#include<SDL_gpu.h>
 
 static inline void isoTo2D(SDL_Rect* pt)
 {
@@ -12,6 +13,14 @@ static inline void isoTo2D(SDL_Rect* pt)
 
 static inline void twoDToIso(SDL_Rect* pt) {
 	int newx, newy;
+	newx = pt->x - pt->y;
+	newy = (pt->x + pt->y) / 2;
+	pt->x = newx;
+	pt->y = newy;
+}
+
+static inline void twoDToIso(GPU_Rect* pt) {
+	float newx, newy;
 	newx = pt->x - pt->y;
 	newy = (pt->x + pt->y) / 2;
 	pt->x = newx;
