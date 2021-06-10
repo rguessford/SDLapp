@@ -6,7 +6,7 @@ struct position {
 };
 
 struct camera {
-	int xOffset, yOffset;
+	float xOffset, yOffset;
 };
 
 struct keyboardController {};

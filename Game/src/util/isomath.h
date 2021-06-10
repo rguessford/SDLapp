@@ -33,3 +33,11 @@ static inline void twoDToIso(int&x, int &y) {
 	x = newx;
 	y = newy;
 }
+
+static inline void twoDToIso(float& x, float& y) {
+	float newx, newy;
+	newx = x - y;
+	newy = (x + y) / 2;
+	x = newx;
+	y = newy;
+}
