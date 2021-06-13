@@ -43,7 +43,7 @@ int main(int argc, char* args[])
 
 		RenderSystem renderSystem(registry, renderer);
 		AnimationSystem animationSystem(registry);
-		CameraSystem cameraSystem(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 , registry);
+		CameraSystem cameraSystem(registry);
 
 
 		std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;

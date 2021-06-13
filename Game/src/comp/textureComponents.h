@@ -27,8 +27,10 @@ struct tileMapRenderer {
 struct drawable {
 	std::shared_ptr<TextureDetails> textureDetails;
 	int currentFrame;
-	bool visible = true;
 };
+
+//empty component marking entites for z ordering
+struct visible{};
 
 enum zombieAnimationEnum {
 	IDLE,

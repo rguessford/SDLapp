@@ -13,8 +13,8 @@ entt::entity makeTilemap(entt::registry& reg, TextureCache& texCache)
 {
 	//json is used as the spritesheet manifest
 	auto tilemapEntity = reg.create();
-	reg.emplace<drawable>(tilemapEntity, texCache.getTexture(textureNameEnum::CUBES), 0, false);
-	//tilemap doesn't use a position, but every entity with a drawable needs a position. shrug.
+	reg.emplace<drawable>(tilemapEntity, texCache.getTexture(textureNameEnum::CUBES), 0);
+	//tilemap doesn't use a position, but every entity with a drawable needs a position, for z ordering. shrug. maybe i'll fix that later
 	reg.emplace<position>(tilemapEntity, 0.0f, 0.0f, 0.0f);
 	auto& mapRenderer = reg.emplace<tileMapRenderer>(tilemapEntity, 100, 100);
 	for (int i = 0; i < 100; i++) {
@@ -35,6 +35,8 @@ entt::entity makeZombie(int x, int y, entt::registry& reg, TextureCache& texCach
 		auto& newcam = reg.emplace<camera>(zombie);
 		newcam.xOffset = cam.xOffset;
 		newcam.yOffset = cam.yOffset;
+		newcam.baseXOffset = newcam.xOffset;
+		newcam.baseYOffset = newcam.yOffset;
 	}
 	return zombie;
 }
