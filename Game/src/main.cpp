@@ -15,8 +15,8 @@
 #include <chrono>
 #include <SDL.h>
 
-const int SCREEN_WIDTH = 1600;
-const int SCREEN_HEIGHT = 1440;
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 1024;
 
 int main(int argc, char* args[])
 {
@@ -34,8 +34,9 @@ int main(int argc, char* args[])
 
 		makeTilemap(registry, textureCache);
 		makeZombie(0,0,registry, textureCache, animationRepository, cam);
+		
 		for (int i = 0; i < 100; i++) {
-			for (int j = 0; j < 33; j++) {
+			for (int j = 0; j < 100; j++) {
 				makeZombie(i*32, j*32, registry, textureCache, animationRepository);
 			}
 		}

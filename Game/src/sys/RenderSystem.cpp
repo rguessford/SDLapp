@@ -8,8 +8,6 @@ RenderSystem::RenderSystem(entt::registry& registry, Renderer& renderer) :System
 void RenderSystem::update(double dt) {
 	
 	mRegistry.view<position, camera>().each([&](auto& campos, auto& camera) {
-		SDL_Point isoCamPos = { campos.x, campos.y };
-		//twoDToIso(&isoCamPos);
 		//render tilemap
 		mRegistry.view<tileMapRenderer, drawable>().each([&](auto& mapRenderer, const auto& drawable) {
 			for (int i = 0; i < 100; i++) {
@@ -29,8 +27,7 @@ void RenderSystem::update(double dt) {
 		});
 
 		mRegistry.sort<drawable, visible>();
-		
-		mRegistry.view<drawable, position>().each([&](auto entity, auto& drawable, const auto& position) {
+		mRegistry.view<drawable, position>(entt::exclude<tileMapRenderer>).each([&](auto entity, auto& drawable, const auto& position) {
 			//animationsystem has run
 			SDL_Rect renderquad = { (int)position.x , (int)position.y,128,128 };
 			twoDToIso(&renderquad);
