@@ -1,7 +1,7 @@
 #include "RenderSystem.h"
 #include "comp/textureComponents.h"
 #include "comp/actorComponents.h"
-#include <iostream>
+#include "iostream"
 #include <util/isomath.h>
 RenderSystem::RenderSystem(entt::registry& registry, Renderer& renderer) :System(registry), mRenderer(renderer), fpsCounter(0),fpsTimer(0) {}
 
@@ -14,8 +14,8 @@ void RenderSystem::update(double dt) {
 				for (int j = 0; j < 100; j++) {
 					SDL_Rect renderquad = { i * 32 ,j * 32,64,64 };
 					twoDToIso(&renderquad);
-					renderquad.x += camera.xOffset;
-					renderquad.y += camera.yOffset;
+					renderquad.x += (int)camera.xOffset;
+					renderquad.y += (int)camera.yOffset;
 					SDL_RenderCopy(mRenderer, drawable.textureDetails->texture, &drawable.textureDetails->frameMapping->at(mapRenderer.tileMap[j][i]), &renderquad);
 				}
 			}
@@ -33,8 +33,8 @@ void RenderSystem::update(double dt) {
 			twoDToIso(&renderquad);
 			renderquad.x -= drawable.textureDetails->foot.x;
 			renderquad.y -= drawable.textureDetails->foot.y;
-			renderquad.x += camera.xOffset;
-			renderquad.y += camera.yOffset;
+			renderquad.x += (int)camera.xOffset;
+			renderquad.y += (int)camera.yOffset;
 
 			if (renderquad.x < camera.baseXOffset*2 && 
 				renderquad.y < camera.baseYOffset * 2 &&

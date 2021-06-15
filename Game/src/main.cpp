@@ -8,6 +8,7 @@
 #include "sys/RenderSystem.h"
 #include "sys/AnimationSystem.h"
 #include "sys/CameraSystem.h"
+#include "sys/MovementSystem.h"
 #include "comp/actorComponents.h"
 
 #include <iostream>
@@ -36,7 +37,7 @@ int main(int argc, char* args[])
 		makeZombie(0,0,registry, textureCache, animationRepository, cam);
 		
 		for (int i = 0; i < 100; i++) {
-			for (int j = 0; j < 100; j++) {
+			for (int j = 0; j < 25; j++) {
 				makeZombie(i*32, j*32, registry, textureCache, animationRepository);
 			}
 		}
@@ -45,6 +46,7 @@ int main(int argc, char* args[])
 		RenderSystem renderSystem(registry, renderer);
 		AnimationSystem animationSystem(registry);
 		CameraSystem cameraSystem(registry);
+		MovementSystem movementSystem(registry);
 
 
 		std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
@@ -57,7 +59,7 @@ int main(int argc, char* args[])
 			cameraSystem.update(deltaTime.count());
 			animationSystem.update(deltaTime.count());
 			//animationSystem comes before movement system. 
-			
+			movementSystem.update(deltaTime.count());
 			//animationsystem relies on the presence of command components and the movement system removes those.
 			renderSystem.update(deltaTime.count());
 			renderer.update();

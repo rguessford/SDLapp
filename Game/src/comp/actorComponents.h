@@ -11,3 +11,7 @@ struct camera {
 };
 
 struct keyboardController {};
+
+struct stats {
+	float movespeed;
+};
