@@ -36,11 +36,11 @@ int main(int argc, char* args[])
 		makeTilemap(registry, textureCache);
 		makeZombie(0,0,registry, textureCache, animationRepository, cam);
 		
-		for (int i = 0; i < 100; i++) {
+	/*	for (int i = 0; i < 100; i++) {
 			for (int j = 0; j < 25; j++) {
 				makeZombie(i*32, j*32, registry, textureCache, animationRepository);
 			}
-		}
+		}*/
 		
 
 		RenderSystem renderSystem(registry, renderer);

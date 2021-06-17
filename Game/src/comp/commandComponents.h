@@ -1,6 +1,8 @@
 #pragma once
 #include <Eigen/Dense>
 
+
+
 struct moveCommand {
 	Eigen::RowVector2f dir;
 

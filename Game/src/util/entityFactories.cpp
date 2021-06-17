@@ -29,7 +29,7 @@ entt::entity makeZombie(int x, int y, entt::registry& reg, TextureCache& texCach
 	reg.emplace<drawable>(zombie, texCache.getTexture(textureNameEnum::ZOMBIE_0), 0);
 	reg.emplace<position>(zombie, static_cast<float>(x), static_cast<float>(y), 0.0f);
 	reg.emplace<animation>(zombie, 0, rand()%8, 0, animRepo.getAnimation(animationEnum::ZOMBIE_0), 36, 0.0, 0.250);
-	reg.emplace<stats>(zombie, 100.0f);
+	reg.emplace<stats>(zombie, 30.0f);
 	if (cam.xOffset + cam.yOffset != 0) {
 		reg.emplace<keyboardController>(zombie);
 		auto& newcam = reg.emplace<camera>(zombie);
