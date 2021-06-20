@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\GLContext.cpp" />
     <ClCompile Include="src\sys\MovementSystem.cpp" />
     <ClCompile Include="src\sys\CameraSystem.cpp" />
     <ClCompile Include="src\sys\AnimationSystem.cpp" />
@@ -33,6 +34,7 @@
     <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\GLContext.h" />
     <ClInclude Include="src\sys\MovementSystem.h" />
     <ClInclude Include="src\comp\commandComponents.h" />
     <ClInclude Include="src\sys\CameraSystem.h" />
@@ -49,6 +51,9 @@
     <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\core\TextureCache.h" />
     <ClInclude Include="src\util\isomath.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\core\shaders\fs.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -110,7 +115,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\vclib;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.14\include;$(ProjectDir)src;$(IncludePath)</IncludePath>
+    <IncludePath>C:\vclib\Eigen;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.14\include;$(ProjectDir)src;$(IncludePath)</IncludePath>
     <LibraryPath>C:\vclib\SDL2-2.0.14\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,7 +160,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

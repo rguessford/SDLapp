@@ -51,6 +51,9 @@
     <ClCompile Include="src\sys\MovementSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\GLContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Events.h">
@@ -101,5 +104,11 @@
     <ClInclude Include="src\sys\MovementSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\GLContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\core\shaders\fs.glsl" />
   </ItemGroup>
 </Project>
