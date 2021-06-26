@@ -53,7 +53,8 @@
     <ClInclude Include="src\util\isomath.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\core\shaders\fs.glsl" />
+    <None Include="src\core\shaders\blackfs.glsl" />
+    <None Include="src\core\shaders\yellowfs.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

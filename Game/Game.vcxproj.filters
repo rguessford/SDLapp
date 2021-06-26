@@ -109,6 +109,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\core\shaders\fs.glsl" />
+    <None Include="src\core\shaders\yellowfs.glsl" />
+    <None Include="src\core\shaders\blackfs.glsl" />
   </ItemGroup>
 </Project>
