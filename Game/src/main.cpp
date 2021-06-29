@@ -85,7 +85,7 @@ using namespace gl;
 int main(int argc, char* args[])
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
-	Window window(SCREEN_WIDTH, SCREEN_HEIGHT);
+	Window window((int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
 	GLContext context(window);
 	glbinding::Binding::initialize([](const char* name) { return reinterpret_cast<glbinding::ProcAddress>(SDL_GL_GetProcAddress(name)); }, false);
 
@@ -132,20 +132,6 @@ int main(int argc, char* args[])
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	//// ..:: Initialization code :: ..
-	//// 1. bind Vertex Array Object
-	
-	//// 2. copy our vertices array in a vertex buffer for OpenGL to use
-	
-	//// 3. copy our index array in a element buffer for OpenGL to use
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-	//// 4. then set the vertex attributes pointers
-	// 
-	//
-
-	//It's better to use ifstream::read for reading from files (faster for large files)
-	//read in shader source
 	Shader inputShader("src/core/Shaders/vs.glsl", "src/core/Shaders/inputfs.glsl");
 	Shader yellowShader("src/core/Shaders/vs.glsl", "src/core/Shaders/yellowfs.glsl");
 
@@ -167,7 +153,7 @@ int main(int argc, char* args[])
 		std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
 		std::chrono::duration<double> deltaTime;
 		deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(lastTime - currentTime);
-		float greenValue = (sin(deltaTime.count()) / 2.0f) + 0.5f;
+		float greenValue = ((float)sin(deltaTime.count()) / 2.0f) + 0.5f;
 
 		glClear(GL_COLOR_BUFFER_BIT);
 		inputShader.use();
