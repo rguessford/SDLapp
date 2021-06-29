@@ -54,6 +54,9 @@
     <ClCompile Include="src\core\GLContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\shaders\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Events.h">
@@ -107,9 +110,12 @@
     <ClInclude Include="src\core\GLContext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\shaders\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\core\shaders\yellowfs.glsl" />
-    <None Include="src\core\shaders\blackfs.glsl" />
+    <None Include="src\core\shaders\inputfs.glsl" />
   </ItemGroup>
 </Project>

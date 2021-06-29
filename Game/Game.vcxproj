@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\shaders\Shader.cpp" />
     <ClCompile Include="src\core\GLContext.cpp" />
     <ClCompile Include="src\sys\MovementSystem.cpp" />
     <ClCompile Include="src\sys\CameraSystem.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\shaders\Shader.h" />
     <ClInclude Include="src\core\GLContext.h" />
     <ClInclude Include="src\sys\MovementSystem.h" />
     <ClInclude Include="src\comp\commandComponents.h" />
@@ -53,7 +55,7 @@
     <ClInclude Include="src\util\isomath.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\core\shaders\blackfs.glsl" />
+    <None Include="src\core\shaders\inputfs.glsl" />
     <None Include="src\core\shaders\yellowfs.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

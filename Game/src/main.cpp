@@ -4,6 +4,7 @@
 #include "core/Events.h"
 #include "core/textureCache.h"
 #include "core/GLContext.h"
+#include "core/shaders/Shader.h"
 
 #include "util/entityFactories.h"
 #include "sys/RenderSystem.h"
@@ -11,6 +12,7 @@
 #include "sys/CameraSystem.h"
 #include "sys/MovementSystem.h"
 #include "comp/actorComponents.h"
+
 
 #include <fstream>
 #include <streambuf>
@@ -144,89 +146,15 @@ int main(int argc, char* args[])
 
 	//It's better to use ifstream::read for reading from files (faster for large files)
 	//read in shader source
-	std::ifstream ivs("src/core/Shaders/vs.glsl");
-	std::string vs((std::istreambuf_iterator<char>(ivs)), (std::istreambuf_iterator<char>()));
-	const char* vsc = vs.c_str();
-
-	std::ifstream ifs("src/core/Shaders/blackfs.glsl");
-	std::string fs((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
-	const char* fsc = fs.c_str();
-
-	std::ifstream iyellowfs("src/core/Shaders/yellowfs.glsl");
-	std::string yellowfs((std::istreambuf_iterator<char>(iyellowfs)), (std::istreambuf_iterator<char>()));
-	const char* yellowfsc = yellowfs.c_str();
-
-	//bind and compile shader source
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vsc, NULL);
-	glCompileShader(vertexShader);
-	//check for errors in compiling the shader
-	int  success;
-	char infoLog[512];
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-
-	if (!success)
-	{
-		glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-	}
-
-	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fsc, NULL);
-	glCompileShader(fragmentShader);
-
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-
-	if (!success)
-	{
-		glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-	}
-
-	GLuint yellowFragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(yellowFragmentShader, 1, &yellowfsc, NULL);
-	glCompileShader(yellowFragmentShader);
-
-	glGetShaderiv(yellowFragmentShader, GL_COMPILE_STATUS, &success);
-
-	if (!success)
-	{
-		glGetShaderInfoLog(yellowFragmentShader, 512, NULL, infoLog);
-		std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-	}
-
-
-	//create shader program, attach shaders
-	GLuint blackShaderProgram = glCreateProgram();
-	glAttachShader(blackShaderProgram, vertexShader);
-	glAttachShader(blackShaderProgram, fragmentShader);
-	glLinkProgram(blackShaderProgram);
-
-	glGetProgramiv(blackShaderProgram, GL_LINK_STATUS, &success);
-	if (!success) {
-		glGetProgramInfoLog(blackShaderProgram, 512, NULL, infoLog);
-	}
-
-	//create shader program, attach shaders
-	GLuint yellowShaderProgram = glCreateProgram();
-	glAttachShader(yellowShaderProgram, vertexShader);
-	glAttachShader(yellowShaderProgram, yellowFragmentShader);
-	glLinkProgram(yellowShaderProgram);
-
-	glGetProgramiv(yellowShaderProgram, GL_LINK_STATUS, &success);
-	if (!success) {
-		glGetProgramInfoLog(yellowShaderProgram, 512, NULL, infoLog);
-	}
-
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
-	glDeleteShader(yellowFragmentShader);
-
-
+	Shader inputShader("src/core/Shaders/vs.glsl", "src/core/Shaders/inputfs.glsl");
+	Shader yellowShader("src/core/Shaders/vs.glsl", "src/core/Shaders/yellowfs.glsl");
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	bool quit = false;
 	SDL_Event e;
+
+	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
+
 	while (!quit)
 	{
 		while (SDL_PollEvent(&e) != 0)
@@ -236,12 +164,19 @@ int main(int argc, char* args[])
 				quit = true;
 			}
 		}
+		std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
+		std::chrono::duration<double> deltaTime;
+		deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(lastTime - currentTime);
+		float greenValue = (sin(deltaTime.count()) / 2.0f) + 0.5f;
+
 		glClear(GL_COLOR_BUFFER_BIT);
-		glUseProgram(blackShaderProgram);
+		inputShader.use();
+		inputShader.setVec4("inColor", 0.0f, greenValue, 0.0f, 1.0f);
+
 		glBindVertexArray(vao);
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
-		glUseProgram(yellowShaderProgram);
+		yellowShader.use();
 		glBindVertexArray(vao2);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);
