@@ -22,11 +22,16 @@
 #include <entt/entity/registry.hpp>
 #include <chrono>
 #include <SDL.h>
+#include <math.h> 
 
 #include <glbinding/gl/gl.h>
 #pragma warning(once: 4251)
 #include <glbinding/Binding.h>
 #pragma warning(default: 4251)
+
+#define STBI_ONLY_PNG
+#define STB_IMAGE_IMPLEMENTATION
+#include "core/stb_image.h"
 
 const gl::GLdouble SCREEN_WIDTH = 1280;
 const gl::GLdouble SCREEN_HEIGHT = 1024;
@@ -90,18 +95,21 @@ int main(int argc, char* args[])
 	glbinding::Binding::initialize([](const char* name) { return reinterpret_cast<glbinding::ProcAddress>(SDL_GL_GetProcAddress(name)); }, false);
 
 	float vertices[] = {
-		 0.25f,  0.5f, 0.0f, 
-		 0.5f, -0.5f, 0.0f, 
-		 0.0f,  -0.5f, 0.0f, 
+		//pos                 //tex        //color
+		 0.25f,  0.5f, 0.0f,  .75f, 1.0f,  1.0f, 1.0f, 1.0f,
+		 0.5f,  -0.5f, 0.0f,  1.0f, 0.0f,  1.0f, 1.0f, 1.0f,
+		 0.0f,  -0.5f, 0.0f,   .5f, 0.0f,  1.0f, 1.0f, 1.0f,
 	};
 	unsigned int indices[] = {  // note that we start from 0!
 		0, 1, 3,   // first triangle
 		1, 2, 3    // second triangle
 	};
+
 	float vertices2[] = {
-		0.0f, -0.5f, 0.0f,
-		-0.25f, 0.5f, 0.0f,
-		-0.5f, -0.5f, 0.0f
+		//pos				  //tex		 //color
+		  0.0f, -0.5f, 0.0f,  .0f, .0f,  1.0f, 1.0f, 1.0f,
+		-0.25f,  0.5f, 0.0f,  .0f, .0f,  1.0f, 1.0f, 1.0f,
+		 -0.5f, -0.5f, 0.0f,  .0f, .0f,  1.0f, 1.0f, 1.0f
 	};
 
 	//unsigned int EBO;
@@ -118,9 +126,13 @@ int main(int argc, char* args[])
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+
 	GLuint vao2;
 	glGenVertexArrays(1, &vao2);
 	glBindVertexArray(vao2);
@@ -129,12 +141,32 @@ int main(int argc, char* args[])
 	glGenBuffers(1, &vbo2);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo2);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+	
 
-	Shader inputShader("src/core/Shaders/vs.glsl", "src/core/Shaders/inputfs.glsl");
-	Shader yellowShader("src/core/Shaders/vs.glsl", "src/core/Shaders/yellowfs.glsl");
+	Shader textureShader("src/core/Shaders/base.vs", "src/core/Shaders/texture.fs");
+	Shader solidShader("src/core/Shaders/base.vs", "src/core/Shaders/color.fs");
 
+	int width, height, nrChannels;
+	unsigned char* data = stbi_load("assets/misc_06.png", &width, &height, &nrChannels, 0);
+
+	unsigned int texture;
+	glGenTextures(1, &texture);
+
+	glBindTexture(GL_TEXTURE_2D, texture);
+	if (data)
+	{
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+	glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		std::cout << "Failed to load texture" << std::endl;
+	}
+	stbi_image_free(data);
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	bool quit = false;
 	SDL_Event e;
@@ -156,13 +188,13 @@ int main(int argc, char* args[])
 		float greenValue = ((float)sin(deltaTime.count()) / 2.0f) + 0.5f;
 
 		glClear(GL_COLOR_BUFFER_BIT);
-		inputShader.use();
-		inputShader.setVec4("inColor", 0.0f, greenValue, 0.0f, 1.0f);
-
+		textureShader.use();
+		glBindTexture(GL_TEXTURE_2D, texture);
 		glBindVertexArray(vao);
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
-		yellowShader.use();
+		solidShader.use();
+		solidShader.setVec4("inColor", greenValue, fmod(greenValue * 4, 1), fmod(greenValue * 8, 1), 1.f);
 		glBindVertexArray(vao2);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glBindVertexArray(0);

@@ -37,6 +37,7 @@
   <ItemGroup>
     <ClInclude Include="src\core\shaders\Shader.h" />
     <ClInclude Include="src\core\GLContext.h" />
+    <ClInclude Include="src\core\stb_image.h" />
     <ClInclude Include="src\sys\MovementSystem.h" />
     <ClInclude Include="src\comp\commandComponents.h" />
     <ClInclude Include="src\sys\CameraSystem.h" />
@@ -55,8 +56,8 @@
     <ClInclude Include="src\util\isomath.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\core\shaders\inputfs.glsl" />
-    <None Include="src\core\shaders\yellowfs.glsl" />
+    <None Include="src\core\shaders\texture.fs" />
+    <None Include="src\core\shaders\color.fs" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
