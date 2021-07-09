@@ -2,7 +2,7 @@
 #include "core/Window.h"
 #include "core/Renderer.h"
 #include "core/Events.h"
-#include "core/textureCache.h"
+#include "core/GLtextureCache.h"
 #include "core/GLContext.h"
 #include "core/shaders/Shader.h"
 
@@ -28,10 +28,6 @@
 #pragma warning(once: 4251)
 #include <glbinding/Binding.h>
 #pragma warning(default: 4251)
-
-#define STBI_ONLY_PNG
-#define STB_IMAGE_IMPLEMENTATION
-#include "core/stb_image.h"
 
 const gl::GLdouble SCREEN_WIDTH = 1280;
 const gl::GLdouble SCREEN_HEIGHT = 1024;
@@ -94,6 +90,8 @@ int main(int argc, char* args[])
 	GLContext context(window);
 	glbinding::Binding::initialize([](const char* name) { return reinterpret_cast<glbinding::ProcAddress>(SDL_GL_GetProcAddress(name)); }, false);
 
+	GLTextureCache textureCache;
+
 	float vertices[] = {
 		//pos                 //tex        //color
 		 0.25f,  0.5f, 0.0f,  .75f, 1.0f,  1.0f, 1.0f, 1.0f,
@@ -150,29 +148,16 @@ int main(int argc, char* args[])
 	Shader textureShader("src/core/Shaders/base.vs", "src/core/Shaders/texture.fs");
 	Shader solidShader("src/core/Shaders/base.vs", "src/core/Shaders/color.fs");
 
-	int width, height, nrChannels;
-	unsigned char* data = stbi_load("assets/misc_06.png", &width, &height, &nrChannels, 0);
 
-	unsigned int texture;
-	glGenTextures(1, &texture);
-
-	glBindTexture(GL_TEXTURE_2D, texture);
-	if (data)
-	{
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-	glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 	bool quit = false;
 	SDL_Event e;
 
 	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
 
+	
+	unsigned int texture;
+	texture = textureCache.getTexture(GLtextureNameEnum::ZOMBIE_0)->texture;
 	while (!quit)
 	{
 		while (SDL_PollEvent(&e) != 0)

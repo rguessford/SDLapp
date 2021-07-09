@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\GLTextureCache.cpp" />
     <ClCompile Include="src\core\shaders\Shader.cpp" />
     <ClCompile Include="src\core\GLContext.cpp" />
     <ClCompile Include="src\sys\MovementSystem.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\GLTextureCache.h" />
     <ClInclude Include="src\core\shaders\Shader.h" />
     <ClInclude Include="src\core\GLContext.h" />
     <ClInclude Include="src\core\stb_image.h" />
