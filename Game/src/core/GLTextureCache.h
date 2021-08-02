@@ -26,12 +26,11 @@ class GLTextureCache
 {
 	const std::string assetDir = "assets/";
 	std::map<GLtextureNameEnum, std::shared_ptr<GLTextureDetails>> Cache;
-	void loadJsonSpritesheetManifest(GLTextureDetails& textureInfo, std::string filename);
 	unsigned int loadTexture(const char* path);
 
 public:
 	GLTextureCache() {};
 	std::shared_ptr<GLTextureDetails> getTexture(GLtextureNameEnum);
 	void clear(GLtextureNameEnum) {};
-
+	void init();
 };

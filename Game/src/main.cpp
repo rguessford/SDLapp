@@ -12,6 +12,7 @@
 #include "sys/CameraSystem.h"
 #include "sys/MovementSystem.h"
 #include "comp/actorComponents.h"
+#include "core/SpriteBatch.h"
 
 
 #include <fstream>
@@ -88,26 +89,29 @@ int main(int argc, char* args[])
 	SDL_Init(SDL_INIT_EVERYTHING);
 	Window window((int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
 	GLContext context(window);
-	glbinding::Binding::initialize([](const char* name) { return reinterpret_cast<glbinding::ProcAddress>(SDL_GL_GetProcAddress(name)); }, false);
 
+	glbinding::Binding::initialize([](const char* name) { return reinterpret_cast<glbinding::ProcAddress>(SDL_GL_GetProcAddress(name)); }, false);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	SpriteBatch spriteBatch;
+	spriteBatch.init();
 	GLTextureCache textureCache;
+	textureCache.init();
 
 	float vertices[] = {
-		//pos                 //tex        //color
-		 0.25f,  0.5f, 0.0f,  .75f, 1.0f,  1.0f, 1.0f, 1.0f,
-		 0.5f,  -0.5f, 0.0f,  1.0f, 0.0f,  1.0f, 1.0f, 1.0f,
-		 0.0f,  -0.5f, 0.0f,   .5f, 0.0f,  1.0f, 1.0f, 1.0f,
+		//pos                 //tex			//color
+		 -0.5f, 0.5f,   0.f, 0.f,		255,255,255,255,
+		 0.5f,  0.5f,   1.f/38.f, 0.f,		255,255,255,255,
+		 -0.5f, -0.5f,  0.f, 1.f/8.f,		255,255,255,255,
+
+		 0.5f,  0.5f,   1.f / 38.f, 0.f,		255,255,255,255,
+		 -0.5f, -0.5f,  0.f, 1.f / 8.f,		255,255,255,255,
+		 .5f, -.5f,     1.f / 38.f, 1.f/8.f,		255,255,255,255
 	};
-	unsigned int indices[] = {  // note that we start from 0!
+	unsigned int indices[] = {
 		0, 1, 3,   // first triangle
 		1, 2, 3    // second triangle
-	};
-
-	float vertices2[] = {
-		//pos				  //tex		 //color
-		  0.0f, -0.5f, 0.0f,  .0f, .0f,  1.0f, 1.0f, 1.0f,
-		-0.25f,  0.5f, 0.0f,  .0f, .0f,  1.0f, 1.0f, 1.0f,
-		 -0.5f, -0.5f, 0.0f,  .0f, .0f,  1.0f, 1.0f, 1.0f
 	};
 
 	//unsigned int EBO;
@@ -124,25 +128,7 @@ int main(int argc, char* args[])
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
-	glEnableVertexAttribArray(2);
 
-	GLuint vao2;
-	glGenVertexArrays(1, &vao2);
-	glBindVertexArray(vao2);
-
-	GLuint vbo2;
-	glGenBuffers(1, &vbo2);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo2);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices2), vertices2, GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(5 * sizeof(float)));
-	glEnableVertexAttribArray(2);
 	
 
 	Shader textureShader("src/core/Shaders/base.vs", "src/core/Shaders/texture.fs");
@@ -174,14 +160,24 @@ int main(int argc, char* args[])
 
 		glClear(GL_COLOR_BUFFER_BIT);
 		textureShader.use();
+
+		spriteBatch.begin();
+		glm::vec4 pos(-0.5f, -0.5f, 1.0f, 1.0f);
+		glm::vec4 uv(.0f, .0f, 1.f / 38.f, 1.f / 8.f);
+		Color color;
+		color.r = 255;
+		color.g = 255;
+		color.b = 255;
+		color.a = 255;
+		spriteBatch.draw(pos, uv, texture, 0.0f, color);
+		spriteBatch.end();
+		spriteBatch.renderBatch();
+
+
 		glBindTexture(GL_TEXTURE_2D, texture);
 		glBindVertexArray(vao);
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		solidShader.use();
-		solidShader.setVec4("inColor", greenValue, fmod(greenValue * 4, 1), fmod(greenValue * 8, 1), 1.f);
-		glBindVertexArray(vao2);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 		glBindVertexArray(0);
 		
 		SDL_GL_SwapWindow(window);

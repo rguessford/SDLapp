@@ -22,6 +22,7 @@
     <ClCompile Include="src\core\GLTextureCache.cpp" />
     <ClCompile Include="src\core\shaders\Shader.cpp" />
     <ClCompile Include="src\core\GLContext.cpp" />
+    <ClCompile Include="src\core\SpriteBatch.cpp" />
     <ClCompile Include="src\sys\MovementSystem.cpp" />
     <ClCompile Include="src\sys\CameraSystem.cpp" />
     <ClCompile Include="src\sys\AnimationSystem.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="src\core\GLTextureCache.h" />
     <ClInclude Include="src\core\shaders\Shader.h" />
     <ClInclude Include="src\core\GLContext.h" />
+    <ClInclude Include="src\core\SpriteBatch.h" />
     <ClInclude Include="src\core\stb_image.h" />
     <ClInclude Include="src\sys\MovementSystem.h" />
     <ClInclude Include="src\comp\commandComponents.h" />
@@ -56,6 +58,7 @@
     <ClInclude Include="src\core\Window.h" />
     <ClInclude Include="src\core\TextureCache.h" />
     <ClInclude Include="src\util\isomath.h" />
+    <ClInclude Include="src\core\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\core\shaders\texture.fs" />
