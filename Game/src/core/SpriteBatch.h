@@ -9,6 +9,7 @@
 #include<vector>
 using namespace gl; 
 
+/*openGL equivalent of the Renderer class in SDL*/
 enum class GlyphSortType {
 	NONE,
 	FRONT_TO_BACK,
@@ -16,7 +17,28 @@ enum class GlyphSortType {
 	TEXTURE
 };
 
-struct Glyph {
+class Glyph {
+public:
+	Glyph() {};
+
+	Glyph(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const Color& color): texture(texture), depth(depth) {
+		topLeft.color = color;
+		topLeft.setPosition(destRect.x, destRect.y + destRect.w);
+		topLeft.setUv(uvRect.x, uvRect.y + uvRect.w);
+
+		bottomLeft.color = color;
+		bottomLeft.setPosition(destRect.x, destRect.y);
+		bottomLeft.setUv(uvRect.x, uvRect.y);
+
+		topRight.color = color;
+		topRight.setPosition(destRect.x + destRect.z, destRect.y + destRect.w);
+		topRight.setUv(uvRect.x + uvRect.z, uvRect.y + uvRect.w);
+
+		bottomRight.color = color;
+		bottomRight.setPosition(destRect.x + destRect.z, destRect.y);
+		bottomRight.setUv(uvRect.x + uvRect.z, uvRect.y);
+	};
+
 	GLuint texture;
 	float depth;
 
@@ -59,7 +81,7 @@ private:
 	void sortGlyphs();
 
 	GlyphSortType _sortType;
-
-	std::vector<Glyph*> _glyphs;
+	std::vector<Glyph*> _glyphPointers;
+	std::vector<Glyph> _glyphs;
 	std::vector<RenderBatch> _renderBatches;
 };

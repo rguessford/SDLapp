@@ -26,6 +26,10 @@ void SpriteBatch::begin(GlyphSortType sortType /* GlyphSortType::TEXTURE*/)
 
 void SpriteBatch::end()
 {
+	_glyphPointers.resize(_glyphs.size());
+	for (int i = 0; i < _glyphs.size(); i++) {
+		_glyphPointers[i] = &_glyphs[i];
+	}
 	sortGlyphs();
 	createRenderBatches();
 }
@@ -33,41 +37,20 @@ void SpriteBatch::end()
 void SpriteBatch::sortGlyphs() {
 	switch (_sortType) {
 	case GlyphSortType::BACK_TO_FRONT:
-		std::stable_sort(_glyphs.begin(), _glyphs.end(), [](Glyph* a, Glyph* b)->bool { return a->depth < b->depth; });
+		std::stable_sort(_glyphPointers.begin(), _glyphPointers.end(), [](Glyph* a, Glyph* b)->bool { return a->depth < b->depth; });
 		break;
 	case GlyphSortType::FRONT_TO_BACK:
-		std::stable_sort(_glyphs.begin(), _glyphs.end(), [](Glyph* a, Glyph* b)->bool { return a->depth > b->depth; });
+		std::stable_sort(_glyphPointers.begin(), _glyphPointers.end(), [](Glyph* a, Glyph* b)->bool { return a->depth > b->depth; });
 		break;
 	case GlyphSortType::TEXTURE:
-		std::stable_sort(_glyphs.begin(), _glyphs.end(), [](Glyph* a, Glyph* b)->bool { return a->texture < b->texture; });
+		std::stable_sort(_glyphPointers.begin(), _glyphPointers.end(), [](Glyph* a, Glyph* b)->bool { return a->texture < b->texture; });
 		break;
 	}
 }
 
 void SpriteBatch::draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, const Color& color)
 {
-	Glyph* newGlyph = new Glyph;
-	newGlyph->texture = texture;
-	newGlyph->depth = depth;
-
-	newGlyph->topLeft.color = color;
-	newGlyph->topLeft.setPosition(destRect.x, destRect.y + destRect.w);
-	newGlyph->topLeft.setUv(uvRect.x, uvRect.y + uvRect.w);
-
-	newGlyph->bottomLeft.color = color;
-	newGlyph->bottomLeft.setPosition(destRect.x, destRect.y);
-	newGlyph->bottomLeft.setUv(uvRect.x, uvRect.y);
-
-	newGlyph->topRight.color = color;
-	newGlyph->topRight.setPosition(destRect.x + destRect.z, destRect.y + destRect.w);
-	newGlyph->topRight.setUv(uvRect.x + uvRect.z, uvRect.y + uvRect.w);
-
-	newGlyph->bottomRight.color = color;
-	newGlyph->bottomRight.setPosition(destRect.x + destRect.z, destRect.y);
-	newGlyph->bottomRight.setUv(uvRect.x + uvRect.z, uvRect.y);
-
-	_glyphs.push_back(newGlyph);
-	
+	_glyphs.emplace_back(destRect, uvRect, texture, depth, color);
 }
 
 void SpriteBatch::createRenderBatches() 
@@ -79,29 +62,29 @@ void SpriteBatch::createRenderBatches()
 	}
 	int cv = 0; //current vertex
 
-	_renderBatches.emplace_back(0, 6, _glyphs[0]->texture);
-	vertices[cv++] = _glyphs[0]->topLeft;
-	vertices[cv++] = _glyphs[0]->bottomLeft;
-	vertices[cv++] = _glyphs[0]->bottomRight;
-	vertices[cv++] = _glyphs[0]->bottomRight;
-	vertices[cv++] = _glyphs[0]->topRight;
-	vertices[cv++] = _glyphs[0]->topLeft;
+	_renderBatches.emplace_back(0, 6, _glyphPointers[0]->texture);
+	vertices[cv++] = _glyphPointers[0]->topLeft;
+	vertices[cv++] = _glyphPointers[0]->bottomLeft;
+	vertices[cv++] = _glyphPointers[0]->bottomRight;
+	vertices[cv++] = _glyphPointers[0]->bottomRight;
+	vertices[cv++] = _glyphPointers[0]->topRight;
+	vertices[cv++] = _glyphPointers[0]->topLeft;
 
 	
-	for (int cg = 1; cg < _glyphs.size(); cg++) {
-		if (_glyphs[cg]->texture != _glyphs[cg - 1]->texture) {
-			_renderBatches.emplace_back(cv, 6, _glyphs[0]->texture);
+	for (int cg = 1; cg < _glyphPointers.size(); cg++) {
+		if (_glyphPointers[cg]->texture != _glyphPointers[cg - 1]->texture) {
+			_renderBatches.emplace_back(cv, 6, _glyphPointers[0]->texture);
 		}
 		else {
 			_renderBatches.back().numVertices += 6;
 		}
 		
-		vertices[cv++] = _glyphs[cg]->topLeft;
-		vertices[cv++] = _glyphs[cg]->bottomLeft;
-		vertices[cv++] = _glyphs[cg]->bottomRight;
-		vertices[cv++] = _glyphs[cg]->bottomRight;
-		vertices[cv++] = _glyphs[cg]->topRight;
-		vertices[cv++] = _glyphs[cg]->topLeft;
+		vertices[cv++] = _glyphPointers[cg]->topLeft;
+		vertices[cv++] = _glyphPointers[cg]->bottomLeft;
+		vertices[cv++] = _glyphPointers[cg]->bottomRight;
+		vertices[cv++] = _glyphPointers[cg]->bottomRight;
+		vertices[cv++] = _glyphPointers[cg]->topRight;
+		vertices[cv++] = _glyphPointers[cg]->topLeft;
 	}
 	
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo);
