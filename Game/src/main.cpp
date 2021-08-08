@@ -25,13 +25,17 @@
 #include <SDL.h>
 #include <math.h> 
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <glbinding/gl/gl.h>
 #pragma warning(once: 4251)
 #include <glbinding/Binding.h>
 #pragma warning(default: 4251)
 
-const gl::GLdouble SCREEN_WIDTH = 1280;
-const gl::GLdouble SCREEN_HEIGHT = 1024;
+const float SCREEN_WIDTH = 1280;
+const float SCREEN_HEIGHT = 1024;
 
 //int main(int argc, char* args[])
 //{
@@ -88,9 +92,11 @@ int main(int argc, char* args[])
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	Window window((int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
+
 	GLContext context(window);
 
 	glbinding::Binding::initialize([](const char* name) { return reinterpret_cast<glbinding::ProcAddress>(SDL_GL_GetProcAddress(name)); }, false);
+	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -144,6 +150,15 @@ int main(int argc, char* args[])
 	
 	unsigned int texture;
 	texture = textureCache.getTexture(GLtextureNameEnum::ZOMBIE_0)->texture;
+
+
+	glm::mat4 model = glm::mat4(1.0f);
+	//model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	glm::mat4 projection = glm::ortho(0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 100.0f);
+	//glm::mat4 projection = glm::mat4(1.0);
+	glm::mat4 view = glm::mat4(1.0f);
+	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+
 	while (!quit)
 	{
 		while (SDL_PollEvent(&e) != 0)
@@ -156,13 +171,18 @@ int main(int argc, char* args[])
 		std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
 		std::chrono::duration<double> deltaTime;
 		deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(lastTime - currentTime);
-		float greenValue = ((float)sin(deltaTime.count()) / 2.0f) + 0.5f;
 
 		glClear(GL_COLOR_BUFFER_BIT);
 		textureShader.use();
+		unsigned int modelLoc = glGetUniformLocation(textureShader.ID, "model");
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		unsigned int viewLoc = glGetUniformLocation(textureShader.ID, "view");
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+		unsigned int projectionLoc = glGetUniformLocation(textureShader.ID, "projection");
+		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 		spriteBatch.begin();
-		glm::vec4 pos(-0.5f, -0.5f, 1.0f, 1.0f);
+		glm::vec4 pos(100.f, 100.f, 200.f, 200.f);
 		glm::vec4 uv(.0f, .0f, 1.f / 38.f, 1.f / 8.f);
 		Color color;
 		color.r = 255;
