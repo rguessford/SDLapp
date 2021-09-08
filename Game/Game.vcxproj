@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\QuadRenderer.cpp" />
     <ClCompile Include="src\core\GLTextureCache.cpp" />
     <ClCompile Include="src\core\shaders\Shader.cpp" />
     <ClCompile Include="src\core\GLContext.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="src\core\TextureCache.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\QuadRenderer.h" />
     <ClInclude Include="src\core\GLTextureCache.h" />
     <ClInclude Include="src\core\shaders\Shader.h" />
     <ClInclude Include="src\core\GLContext.h" />
@@ -61,6 +63,8 @@
     <ClInclude Include="src\core\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\core\shaders\basic2d.vs" />
+    <None Include="src\core\shaders\basic3d.vs" />
     <None Include="src\core\shaders\texture.fs" />
     <None Include="src\core\shaders\color.fs" />
   </ItemGroup>

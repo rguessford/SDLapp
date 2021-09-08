@@ -62,6 +62,17 @@ std::shared_ptr<GLTextureDetails> GLTextureCache::getTexture(GLtextureNameEnum t
 			textureInfo = it->second;
 		}
 		break;
+	case GLtextureNameEnum::BRICK_02:
+		it = Cache.find(GLtextureNameEnum::BRICK_02);
+		if (it == Cache.end()) { //not found
+			std::string path = assetDir + "Brick_02.png";
+			textureInfo = std::make_shared<GLTextureDetails>(GLtextureNameEnum::BRICK_02, loadTexture(path.c_str()), std::make_shared<std::vector<SDL_Rect>>(), emptyPoint);
+			Cache.insert(std::pair<GLtextureNameEnum, std::shared_ptr<GLTextureDetails>>(GLtextureNameEnum::BRICK_02, textureInfo));
+		}
+		else {
+			textureInfo = it->second;
+		}
+		break;
 	}
 
 	return textureInfo;

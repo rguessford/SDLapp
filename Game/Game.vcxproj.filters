@@ -63,6 +63,9 @@
     <ClCompile Include="src\core\SpriteBatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\QuadRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Events.h">
@@ -131,9 +134,14 @@
     <ClInclude Include="src\core\Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\QuadRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\core\shaders\color.fs" />
     <None Include="src\core\shaders\texture.fs" />
+    <None Include="src\core\shaders\basic2d.vs" />
+    <None Include="src\core\shaders\basic3d.vs" />
   </ItemGroup>
 </Project>

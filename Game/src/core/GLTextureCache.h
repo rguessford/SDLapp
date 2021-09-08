@@ -9,7 +9,7 @@
 #include <memory>
 
 enum class GLtextureNameEnum {
-	CUBES, ZOMBIE_0
+	CUBES, ZOMBIE_0, BRICK_02
 };
 
 struct GLTextureDetails {

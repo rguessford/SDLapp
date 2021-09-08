@@ -12,8 +12,9 @@
 #include "sys/CameraSystem.h"
 #include "sys/MovementSystem.h"
 #include "comp/actorComponents.h"
-#include "core/SpriteBatch.h"
 
+#include "core/SpriteBatch.h"
+#include "core/QuadRenderer.h"
 
 #include <fstream>
 #include <streambuf>
@@ -96,49 +97,23 @@ int main(int argc, char* args[])
 	GLContext context(window);
 
 	glbinding::Binding::initialize([](const char* name) { return reinterpret_cast<glbinding::ProcAddress>(SDL_GL_GetProcAddress(name)); }, false);
-	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	QuadRenderer quadRenderer;
+	quadRenderer.init();
+
 	SpriteBatch spriteBatch;
 	spriteBatch.init();
+
 	GLTextureCache textureCache;
 	textureCache.init();
 
-	float vertices[] = {
-		//pos                 //tex			//color
-		 -0.5f, 0.5f,   0.f, 0.f,		255,255,255,255,
-		 0.5f,  0.5f,   1.f/38.f, 0.f,		255,255,255,255,
-		 -0.5f, -0.5f,  0.f, 1.f/8.f,		255,255,255,255,
-
-		 0.5f,  0.5f,   1.f / 38.f, 0.f,		255,255,255,255,
-		 -0.5f, -0.5f,  0.f, 1.f / 8.f,		255,255,255,255,
-		 .5f, -.5f,     1.f / 38.f, 1.f/8.f,		255,255,255,255
-	};
-	unsigned int indices[] = {
-		0, 1, 3,   // first triangle
-		1, 2, 3    // second triangle
-	};
-
-	//unsigned int EBO;
-	//glGenBuffers(1, &EBO);
-
-	////vertex array object
-	GLuint vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-
-	////vertex buffer object
-	GLuint vbo;
-	//generate name
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	
-
-	Shader textureShader("src/core/Shaders/base.vs", "src/core/Shaders/texture.fs");
-	Shader solidShader("src/core/Shaders/base.vs", "src/core/Shaders/color.fs");
+	Shader glyphShader("src/core/Shaders/basic2d.vs", "src/core/Shaders/texture.fs");
+	Shader solidShader("src/core/Shaders/basic2d.vs", "src/core/Shaders/color.fs");
+	Shader quadShader("src/core/Shaders/basic3d.vs", "src/core/Shaders/texture.fs");
 
 
 	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -147,18 +122,28 @@ int main(int argc, char* args[])
 
 	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
 
-	
+	glm::vec3 A (0.f, 0.f, 0.f);
+	glm::vec3 B (0.f, 0.f, 100.f);
+	glm::vec3 C (100.f, 0.f, 0.f);
+	glm::vec3 D (100.f, 0.f, 100.f);
+
 	unsigned int texture;
-	texture = textureCache.getTexture(GLtextureNameEnum::ZOMBIE_0)->texture;
+	texture = textureCache.getTexture(GLtextureNameEnum::BRICK_02)->texture;
 
 
 	glm::mat4 model = glm::mat4(1.0f);
-	//model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	glm::mat4 projection = glm::ortho(0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, 0.0f, 100.0f);
+	//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	glm::mat4 projection = glm::ortho(0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, -5000.0f, 5000.0f);
 	//glm::mat4 projection = glm::mat4(1.0);
 	glm::mat4 view = glm::mat4(1.0f);
-	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -30.0f));
+	view = glm::rotate(view, glm::radians(-35.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+	view = glm::rotate(view, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, .0f));
 
+	int prevmousex, prevmousey;
+	SDL_GetMouseState(&prevmousex, &prevmousey);
+	float rotx = 0.0f;
+	float roty = 0.0f;
 	while (!quit)
 	{
 		while (SDL_PollEvent(&e) != 0)
@@ -168,22 +153,37 @@ int main(int argc, char* args[])
 				quit = true;
 			}
 		}
+		int curmousex, curmousey;
+		SDL_GetMouseState(&curmousex, &curmousey);
+		int deltaMouseX = curmousex - prevmousex;
+		prevmousex = curmousex;
+		int deltaMouseY = curmousey - prevmousey;
+		prevmousey = curmousey;
+
+		std::cout << deltaMouseX << ", "<< deltaMouseY << std::endl;
+
+
+		
+
 		std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
 		std::chrono::duration<double> deltaTime;
 		deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(lastTime - currentTime);
 
 		glClear(GL_COLOR_BUFFER_BIT);
-		textureShader.use();
-		unsigned int modelLoc = glGetUniformLocation(textureShader.ID, "model");
+		/*glyphShader.use();
+
+		unsigned int modelLoc = glGetUniformLocation(glyphShader.ID, "model");
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		unsigned int viewLoc = glGetUniformLocation(textureShader.ID, "view");
+
+		unsigned int viewLoc = glGetUniformLocation(glyphShader.ID, "view");
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		unsigned int projectionLoc = glGetUniformLocation(textureShader.ID, "projection");
+
+		unsigned int projectionLoc = glGetUniformLocation(glyphShader.ID, "projection");
 		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
 		spriteBatch.begin();
-		glm::vec4 pos(100.f, 100.f, 200.f, 200.f);
-		glm::vec4 uv(.0f, .0f, 1.f / 38.f, 1.f / 8.f);
+		glm::vec4 pos(500.f, 500.f, 512.f, 512.f);
+		glm::vec4 uv(.0f, .0f, 1.f , 1.f);
 		Color color;
 		color.r = 255;
 		color.g = 255;
@@ -192,14 +192,27 @@ int main(int argc, char* args[])
 		spriteBatch.draw(pos, uv, texture, 0.0f, color);
 		spriteBatch.end();
 		spriteBatch.renderBatch();
+		*/
 
+		unsigned int modelLoc = glGetUniformLocation(quadShader.ID, "model");
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-		glBindTexture(GL_TEXTURE_2D, texture);
-		glBindVertexArray(vao);
-		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		glDrawArrays(GL_TRIANGLES, 0, 6);
-		glBindVertexArray(0);
-		
+		unsigned int viewLoc = glGetUniformLocation(quadShader.ID, "view");
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+
+		unsigned int projectionLoc = glGetUniformLocation(quadShader.ID, "projection");
+		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+		quadShader.use();
+		quadRenderer.begin();
+		glm::vec4 uv(.0f, .0f, 1.f, 1.f);
+		Color color;
+		color.r = 255;
+		color.g = 255;
+		color.b = 255;
+		color.a = 255;
+		quadRenderer.draw(A, B, C, D, uv, texture, color);
+		quadRenderer.end();
+		quadRenderer.renderQuads();
 		SDL_GL_SwapWindow(window);
 	}
 	SDL_Quit();
