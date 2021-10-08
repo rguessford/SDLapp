@@ -35,8 +35,10 @@
 #include <glbinding/Binding.h>
 #pragma warning(default: 4251)
 
-const float SCREEN_WIDTH = 1280;
-const float SCREEN_HEIGHT = 1024;
+
+
+const float SCREEN_WIDTH = 1920;
+const float SCREEN_HEIGHT = 1080;
 
 //int main(int argc, char* args[])
 //{
@@ -91,6 +93,9 @@ const float SCREEN_HEIGHT = 1024;
 using namespace gl;
 int main(int argc, char* args[])
 {
+	entt::registry registry;
+	Events events;
+
 	SDL_Init(SDL_INIT_EVERYTHING);
 	Window window((int)SCREEN_WIDTH, (int)SCREEN_HEIGHT);
 
@@ -120,39 +125,41 @@ int main(int argc, char* args[])
 	bool quit = false;
 	SDL_Event e;
 
-	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
-
 	glm::vec3 A (0.f, 0.f, 0.f);
-	glm::vec3 B (0.f, 0.f, 100.f);
-	glm::vec3 C (100.f, 0.f, 0.f);
-	glm::vec3 D (100.f, 0.f, 100.f);
+	glm::vec3 B (0.f, 0.f, -32.f);
+	glm::vec3 C (-32.f, 0.f, 0.f);
+	glm::vec3 D (-32.f, 0.f, -32.f);
 
 	unsigned int texture;
 	texture = textureCache.getTexture(GLtextureNameEnum::BRICK_02)->texture;
 
 
 	glm::mat4 model = glm::mat4(1.0f);
+	//model = glm::scale(model, glm::vec3(16.f, 16.f, 16.f));
 	//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	glm::mat4 projection = glm::ortho(0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, -5000.0f, 5000.0f);
+	glm::mat4 projection = glm::ortho(-SCREEN_WIDTH/32, SCREEN_WIDTH/32, -SCREEN_HEIGHT/32, SCREEN_HEIGHT/32, -5000.0f, 5000.0f);
 	//glm::mat4 projection = glm::mat4(1.0);
 	glm::mat4 view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -30.0f));
-	view = glm::rotate(view, glm::radians(-35.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-	view = glm::rotate(view, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, .0f));
 
 	int prevmousex, prevmousey;
 	SDL_GetMouseState(&prevmousex, &prevmousey);
-	float rotx = 0.0f;
-	float roty = 0.0f;
-	while (!quit)
+	float somex = .0f;
+	float somey = .0f;
+
+	CameraSystem cameraSystem(registry);
+	MovementSystem movementSystem(registry);
+
+	entt::entity thing = makeThing(registry, 0.f, 0.f, 0.f);
+	registry.emplace<cameraFocus>(thing, 0.f,0.f,0.f);
+	
+	std::chrono::steady_clock::time_point lastTime = std::chrono::steady_clock::now(), currentTime;
+	std::chrono::duration<double> deltaTime;
+
+	while (events.handleEvents(deltaTime.count(), registry))
 	{
-		while (SDL_PollEvent(&e) != 0)
-		{
-			if (e.type == SDL_QUIT)
-			{
-				quit = true;
-			}
-		}
+		currentTime = std::chrono::steady_clock::now();
+		deltaTime = std::chrono::duration_cast<std::chrono::duration<double>>(currentTime - lastTime);
+		lastTime = currentTime;
 		int curmousex, curmousey;
 		SDL_GetMouseState(&curmousex, &curmousey);
 		int deltaMouseX = curmousex - prevmousex;
@@ -162,43 +169,14 @@ int main(int argc, char* args[])
 
 		std::cout << deltaMouseX << ", "<< deltaMouseY << std::endl;
 
-
-		
-
-		std::chrono::steady_clock::time_point currentTime = std::chrono::steady_clock::now();
-		std::chrono::duration<double> deltaTime;
-		deltaTime = std::chrono::duration_cast<std::chrono::duration<float>>(lastTime - currentTime);
-
+		movementSystem.update(deltaTime.count());
+		cameraSystem.update(deltaTime.count(), view);
 		glClear(GL_COLOR_BUFFER_BIT);
-		/*glyphShader.use();
-
-		unsigned int modelLoc = glGetUniformLocation(glyphShader.ID, "model");
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
-		unsigned int viewLoc = glGetUniformLocation(glyphShader.ID, "view");
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-
-		unsigned int projectionLoc = glGetUniformLocation(glyphShader.ID, "projection");
-		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
-
-		spriteBatch.begin();
-		glm::vec4 pos(500.f, 500.f, 512.f, 512.f);
-		glm::vec4 uv(.0f, .0f, 1.f , 1.f);
-		Color color;
-		color.r = 255;
-		color.g = 255;
-		color.b = 255;
-		color.a = 255;
-		spriteBatch.draw(pos, uv, texture, 0.0f, color);
-		spriteBatch.end();
-		spriteBatch.renderBatch();
-		*/
-
+		unsigned int viewLoc = glGetUniformLocation(quadShader.ID, "view");
 		unsigned int modelLoc = glGetUniformLocation(quadShader.ID, "model");
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
-		unsigned int viewLoc = glGetUniformLocation(quadShader.ID, "view");
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+		
 
 		unsigned int projectionLoc = glGetUniformLocation(quadShader.ID, "projection");
 		glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));

@@ -5,4 +5,5 @@
 #include <entt/entity/registry.hpp>
 
 entt::entity makeTilemap(entt::registry&, TextureCache&);
-entt::entity makeZombie(int, int, entt::registry&, TextureCache&, AnimationRepository&, camera camera = {0,0});
+entt::entity makeZombie(int, int, entt::registry&, TextureCache&, AnimationRepository&);
+entt::entity makeThing(entt::registry&, float, float, float);

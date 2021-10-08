@@ -128,8 +128,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\vclib\Eigen;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.14\include;$(ProjectDir)src;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\vclib\SDL2-2.0.14\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\vclib\Eigen;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.14\include;$(ProjectDir)src;C:\vclib\assimp\assimp\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\vclib\assimp\assimp\lib;C:\vclib\SDL2-2.0.14\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -173,7 +173,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;OpenGL32.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>echo NOTE: warning C4521 is an unfixable glbinding warning, and many of them are hidden.</Command>
